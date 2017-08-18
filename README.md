@@ -11,7 +11,7 @@ TASTKS:
 
 * Make a way that saved songs and playlists (and movies?) don't overflow and take more than screen width and height.
 
-* Trim to a square non-square album images.
+* Trim/crop to a square non-square album images.
 
 * Sending forms to right DBs.
 
@@ -46,8 +46,6 @@ TASTKS:
 * keeping scrollbar of chat at bottom
 
 * unique hash url for playlists - and entering to the specific one if entered in url bar.
-
-* quick-pretty css transition between tabs. (maybe not?)
 
 
 Thanks for reading and participating!
