@@ -416,7 +416,7 @@ font-weight: 600;
 
 
   function updateSource(number){
-    //can get a song and play it, and can get "rand" and if it gets it then it should play a random song obviously.
+    //can get a song and play it, and can get "rand" and if it gets it then it should play a random song.
     var playme = document.getElementById('audio');
     playme.src='songs/'+number+'.mp3';
     playme.play();
@@ -680,6 +680,10 @@ function makebiggerandsmaller(searchfocus){
   }
 }
 
+function coolgifs(){
+  document.getElementById('amancircle').src = "pictures/load"+Math.floor((Math.random() * 17) + 1)+".gif";
+}
+
 function loadingding() {
     setTimeout(function(){
       document.getElementById("loading").style.display="none";
@@ -688,7 +692,7 @@ function loadingding() {
 }
   </script>
 </head>
-<body onresize="resizing();" onload="loadingding();onloading();searching();randchatcolor();resizing();">
+<body style="user-drag: none; user-select: none;-moz-user-select: none;-webkit-user-drag: none;-webkit-user-select: none;-ms-user-select: none;" onresize="resizing();" onload="loadingding();onloading();searching();randchatcolor();resizing();">
 
 
 <!-- DUMMY LOADING SO EVERYTHING IS PUT IN PLACE -->
@@ -766,7 +770,8 @@ function loadingding() {
                 <path d="M0 0h24v24H0z" fill="none"/>
             </svg>
           </td>
-          <td width="180" align="middle"><img style="user-drag: none; user-select: none;-moz-user-select: none;-webkit-user-drag: none;-webkit-user-select: none;-ms-user-select: none;" src="pictures/logo2.png"></td>
+          <td width="77" align="left" valign="middle" style="padding-top: 5px;"><img src="pictures/logo3.png"></td>
+          <td width="80" align="left" valign="middle"><img id="amancircle" onclick="coolgifs();" class="img-circle" height="60" src="pictures/logo4.png"></td>
         </tr>
       </table>
   </td></tr>
@@ -1258,7 +1263,7 @@ function loadingding() {
 				  <p>גילעד פדר, המתכנת היוצר והאגדה</p>
 				  <p>יניב כהן, האדמין השרמנטי</p>
                   <p>וכמובן תודה ענקית לכם המשתמשים!</p>
-                  <table height="160" width="60%" style="border-spacing: 30px;font-size: 14px; color: grey;" align="center"><tr><td align="center"><figure class="figure"><img src="pictures/itay.png" height="100" class="img-circle"><figcaption align="center" class="figure-caption">איתי מאירי</figcaption></figure></td><td align="center"><figure class="figure"><img src="pictures/gilad.png" height="100" class="img-circle"><figcaption align="center" class="figure-caption">גילעד פדר</figcaption></figure></td><td align="center"><figure class="figure"><img src="pictures/yaniv.png" height="100" class="img-circle"><figcaption align="center" class="figure-caption">יניב כהן</figcaption></figure></td></tr></table>
+                  <table height="160" width="60%" style="border-spacing: 30px;font-size: 14px; color: grey;" align="center"><tr><td align="center"><figure class="figure"><img src="pictures/itay.png" height="100" class="img-circle"><figcaption align="center" class="figure-caption">איתי מאירי</figcaption></figure></td><td align="center"><figure class="figure"><img src="pictures/Gilad.png" height="100" class="img-circle"><figcaption align="center" class="figure-caption">גילעד פדר</figcaption></figure></td><td align="center"><figure class="figure"><img src="pictures/yaniv.png" height="100" class="img-circle"><figcaption align="center" class="figure-caption">יניב כהן</figcaption></figure></td></tr></table>
                 </div>
                 <div class="modal-footer">
                   <button type="button" style="outline: none;"  class="btn btn-default pull-left" data-dismiss="modal">סגור</button>
