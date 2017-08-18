@@ -1,6 +1,6 @@
 <html>
 <head>
-<link rel="icon" type="image/png" href="icons/favicon.png" sizes="16x16"/>
+<link rel="icon" type="image/png" href="pictures/favicon.png" sizes="16x16"/>
 
 <link href="https://fonts.googleapis.com/css?family=Assistant:400,600,700&amp;subset=hebrew" rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -331,7 +331,7 @@ font-weight: 600;
   border-radius: 50px;
   box-shadow: 0px 2px 5px #ababab;
   top: 85px;
-  left: 280px;
+  left: 270px;
 }
 .dice {
   display: inline-block;
@@ -342,15 +342,15 @@ font-weight: 600;
   text-align: center;
   padding: 8px 0;
   fill: #ababab;
-    transition-duration: 0.25s;
+  transition-duration: 0.25s;
 }
 .button:hover .dice{
   fill: #8c8c8c;
-    transition-duration: 0.25s;
+  transition-duration: 0.25s;
 }
 .button:hover{
-      box-shadow: 0px 4px 10px #808080;
-          transition-duration: 0.25s;
+  box-shadow: 0px 4px 10px #808080;
+  transition-duration: 0.25s;
 }
 
 
@@ -416,6 +416,7 @@ font-weight: 600;
 
 
   function updateSource(number){
+    //can get a song and play it, and can get "rand" and if it gets it then it should play a random song obviously.
     var playme = document.getElementById('audio');
     playme.src='songs/'+number+'.mp3';
     playme.play();
@@ -926,7 +927,7 @@ function loadingding() {
 <!-- END OF PLAYLIST -->
 <!-- HOME -->
 <td style="display:table-cell;animation: fadeIn 1s;" id="homey" bgcolor="white">
-  <a onclick="updateSource(1);" class="button">
+  <a onclick="updateSource(rand);" class="button">
   <span class="dice">
 <svg height="32" viewBox="0 0 24 24" width="32">
     <path d="M0 0h24v24H0zm21.02 19c0 1.1-.9 2-2 2h-14c-1.1 0-2-.9-2-2V5c0-1.1.9-2 2-2h14c1.1 0 2 .9 2 2v14z" fill="none"/>
