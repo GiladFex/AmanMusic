@@ -680,8 +680,17 @@ function makebiggerandsmaller(searchfocus){
   }
 }
 
+var x = setTimeout();
 function coolgifs(){
-  document.getElementById('amancircle').src = "pictures/load"+Math.floor((Math.random() * 17) + 1)+".gif";
+  clearTimeout(x);
+  document.getElementById('coolcircle').src = "pictures/load"+Math.floor((Math.random() * 17) + 1)+".gif";
+  document.getElementById('amancircle').style.display="none";
+  document.getElementById('coolcircle').style.display="inline";
+  x = setTimeout(function() {
+    document.getElementById('amancircle').style.display="inline";
+    document.getElementById('coolcircle').style.display="none";
+  }, 4000);
+
 }
 
 function loadingding() {
@@ -771,7 +780,13 @@ function loadingding() {
             </svg>
           </td>
           <td width="77" align="left" valign="middle" style="padding-top: 5px;"><img src="pictures/logo3.png"></td>
-          <td width="80" align="left" valign="middle"><img id="amancircle" onclick="coolgifs();" class="img-circle" height="60" src="pictures/logo4.png"></td>
+          <td width="80" align="left" valign="middle">
+            <div class="imageWrap">
+    <img id="amancircle" style="display:inline;animation: fadeIn 1s;" onclick="coolgifs();" class="img-circle" height="60" src="pictures/logo4.png">
+    <img id="coolcircle" style="display:none;animation: fadeIn 1s;" onclick="coolgifs();" class="img-circle" height="60" src="pictures/load4.gif" />
+</div>
+
+</td>
         </tr>
       </table>
   </td></tr>
