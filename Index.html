@@ -341,11 +341,11 @@ font-weight: 600;
   width: 48px;
   text-align: center;
   padding: 8px 0;
-  fill: #ababab;
+  fill: #636363;
   transition-duration: 0.25s;
 }
 .button:hover .dice{
-  fill: #8c8c8c;
+  fill: #393939;
   transition-duration: 0.25s;
 }
 .button:hover{
@@ -415,14 +415,19 @@ font-weight: 600;
     }
 
 
-  function updateSource(number){
-    //can get a song and play it, and can get "rand" and if it gets it then it should play a random song.
+  function updateSource(name){
     var playme = document.getElementById('audio');
-    playme.src='songs/'+number+'.mp3';
-    playme.play();
-    document.title = number;
     document.getElementById("starbot").classList.add("botbutton");
     document.getElementById("playlistbot").classList.add("botbutton");
+    if (name=="rand"){
+      //it should randomize between every single song.. currently there are two - 1.mp3 and 2.mp3 so it randomizes between them.
+        playme.src = "songs/"+Math.floor((Math.random() * 2) + 1)+".mp3";
+    }
+    else{
+        playme.src='songs/'+name+'.mp3';
+    }
+    document.title = playme.src.slice(6,-4);
+    playme.play();
   }
   function star(TheID) {
           document.getElementById('star1').src='icons/cardstarfill.svg';
@@ -706,16 +711,16 @@ function loadingding() {
 
 <!-- DUMMY LOADING SO EVERYTHING IS PUT IN PLACE -->
 <table style="animation: fadeIn 1s;    text-shadow: 2px 2px 0 white, 2px -2px 0 white, -2px 2px 0 white, -2px -2px 0 white;" id="loading" class="fulltable" background="pictures/loadingbg.jpg">
-<tr><td height="30%"></td></tr>
+<tr><td height="25%"></td></tr>
   <tr>
-    <td height="60" align="center">
+    <td height="1" align="center">
       <font style="font-size: 120px;line-height: 20px;">
   AMAN MUSIC</font><br>
   <font style="font-size: 20px; word-spacing: 5px;line-height: 20px;">
   פלטפורמת מוזיקה וסרטים</font><br><br>
 </td></tr>
 <tr><td height="1" align="center"><img src="pictures/load.gif" class="img-circle"></td></tr>
-<tr><td height="70%"></td></tr>
+<tr><td height="25%"></td></tr>
 </td>
 </tr>
 </table>
@@ -782,8 +787,8 @@ function loadingding() {
           <td width="77" align="left" valign="middle" style="padding-top: 5px;"><img src="pictures/logo3.png"></td>
           <td width="80" align="left" valign="middle">
             <div class="imageWrap">
-    <img id="amancircle" style="display:inline;animation: fadeIn 1s;" onclick="coolgifs();" class="img-circle" height="60" src="pictures/logo4.png">
-    <img id="coolcircle" style="display:none;animation: fadeIn 1s;" onclick="coolgifs();" class="img-circle" height="60" src="pictures/load4.gif" />
+    <img id="amancircle" style="display:inline;animation: fadeIn 2s;" onclick="coolgifs();" class="img-circle" height="60" src="pictures/logo4.png">
+    <img id="coolcircle" style="display:none;animation: fadeIn 2s;" onclick="coolgifs();" class="img-circle" height="60" src="pictures/load4.gif" />
 </div>
 
 </td>
@@ -803,10 +808,9 @@ function loadingding() {
 <!-- 404 ERROR -->
 
 <td style="display: none;animation: fadeIn 1s;"  dir="rtl" id="error" bgcolor="white">
-  <table class="fulltable">
-    <tr><td valign="bottom" align="center" style="font-size: 120px;" dir="ltr" height="50%">Sorry...</td></tr>
-    <tr><td align="center" style="font-size: 30px;" height="1">לא נמצא העמוד המתאים.</td></tr>
-    <tr><td valign="bottom" align="right"><img  style="height: 400px;" src="pictures/404.jpg"></td></tr>
+  <table border="0" style="text-shadow:-1px -1px 0 #fff,1px -1px 0 #fff,-1px 1px 0 #fff,1px 1px 0 #fff;background-repeat: no-repeat;background-position: right bottom;background-size:auto 400px;" background="pictures/404.png" class="fulltable">
+    <tr><td valign="bottom" align="center" style="font-size: 120px;" dir="ltr">Sorry...</td></tr>
+    <tr><td height="50%" valign="top" align="center" style="font-size: 30px;" height="1">לא נמצא העמוד המתאים.</td></tr>
 </table>
 </td>
 
@@ -947,7 +951,7 @@ function loadingding() {
 <!-- END OF PLAYLIST -->
 <!-- HOME -->
 <td style="display:table-cell;animation: fadeIn 1s;" id="homey" bgcolor="white">
-  <a onclick="updateSource(rand);" class="button">
+  <a onclick="updateSource('rand');" class="button">
   <span class="dice">
 <svg height="32" viewBox="0 0 24 24" width="32">
     <path d="M0 0h24v24H0zm21.02 19c0 1.1-.9 2-2 2h-14c-1.1 0-2-.9-2-2V5c0-1.1.9-2 2-2h14c1.1 0 2 .9 2 2v14z" fill="none"/>
