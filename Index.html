@@ -326,7 +326,7 @@ font-weight: 600;
 .button {
   background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 100%);
   position: absolute;
-  padding: 4px;
+  padding: 3px;
   display: inline-block;
   border-radius: 50px;
   box-shadow: 0px 2px 5px #ababab;
@@ -344,7 +344,6 @@ font-weight: 600;
   padding: 8px 0;
   fill: #636363;
   transition-duration: 0.25s;
-  z-index: 1000;
 }
 .button:hover .dice{
   fill: #393939;
@@ -588,6 +587,7 @@ function randchatcolor(){
     color += letters[Math.round(Math.random() * 15)];
   }
   document.getElementById("input-color").value = color;
+  savedcolor = color;
 }
 
 
@@ -730,6 +730,22 @@ function chatUpdate() {
   }
 }
 
+var savedcolor;
+function isvalidcolor(){
+  var r,g,b,lum;
+  var hex = document.getElementById("input-color").value.toString(16);
+  hex = hex.replace('#','');
+  r = parseInt(hex.substring(0,2), 16);
+  g = parseInt(hex.substring(2,4), 16);
+  b = parseInt(hex.substring(4,6), 16);
+  lum = (r+r+b+g+g+g)/6;
+  if (lum>151){
+    $("#colorproblem").fadeIn("slow");
+     document.getElementById("input-color").value = savedcolor;
+    setTimeout(function(){ $("#colorproblem").fadeOut("slow"); }, 3000);
+  }
+  savedcolor = document.getElementById("input-color").value;
+  }
 
   </script>
 </head>
@@ -737,7 +753,7 @@ function chatUpdate() {
 
 
 <!-- DUMMY LOADING SO EVERYTHING IS PUT IN PLACE -->
-<table style="animation: fadeIn 1s;    text-shadow: 2px 2px 0 white, 2px -2px 0 white, -2px 2px 0 white, -2px -2px 0 white;" id="loading" class="fulltable" background="pictures/loadingbg.jpg">
+<table style="animation: fadeIn 1s; text-shadow: 2px 2px 0 white, 2px -2px 0 white, -2px 2px 0 white, -2px -2px 0 white;" id="loading" class="fulltable" background="pictures/loadingbg.jpg">
 <tr><td height="25%"></td></tr>
   <tr>
     <td height="1" align="center">
@@ -757,6 +773,7 @@ function chatUpdate() {
 <table style="display: none;animation: fadeIn 1s;" id="realone" class="fulltable">
 <!-- HEADER -->
   <tr style="background: linear-gradient(-65deg, #43C6AC, #F8FFAE);border-bottom: 1px solid #ebebeb;">
+    <div id="colorproblem" style="z-index: 4000;position: absolute;direction: rtl;left: 10px;top: 10px;display:none;animation: fadeIn 1s;" class="alert alert-danger">מצטערים, הצבע בהיר מידי. בחר צבע ככה יותר.</div>
     <td colspan="2" style="background:rgba(255,255,255,0.8);" height="70">
 
       <table class="fulltable">
@@ -833,7 +850,6 @@ function chatUpdate() {
   </table></td>
 <!-- TACHLES -->
 <!-- 404 ERROR -->
-
 <td style="display: none;animation: fadeIn 1s;"  dir="rtl" id="error" bgcolor="white">
   <table border="0" style="text-shadow:-1px -1px 0 #fff,1px -1px 0 #fff,-1px 1px 0 #fff,1px 1px 0 #fff;background-repeat: no-repeat;background-position: right bottom;background-size:auto 400px;" background="pictures/404.png" class="fulltable">
     <tr><td valign="bottom" align="center" style="font-size: 120px;" dir="ltr">Sorry...</td></tr>
@@ -1210,7 +1226,7 @@ function chatUpdate() {
             <br><p><b>שם תצוגה :</b> גילעד פדר</p>
             <table style="font-size: 14px;" border="0">
               <tr><td><b>צבע תצוגה לצ'אט:</b>&nbsp;</td><td><div class="input-color-container">
-                  <input id="input-color" value="#ff0000" class="input-color" type="color">
+                  <input id="input-color" value="#ff0000" class="input-color" onchange="isvalidcolor();" type="color">
                 </div></td></tr>
             </table><br>
             <p><b>קיצורי מקלדת:</b></p>
