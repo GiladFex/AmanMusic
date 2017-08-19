@@ -332,6 +332,7 @@ font-weight: 600;
   box-shadow: 0px 2px 5px #ababab;
   top: 85px;
   left: 270px;
+  z-index: 1000;
 }
 .dice {
   display: inline-block;
@@ -343,6 +344,7 @@ font-weight: 600;
   padding: 8px 0;
   fill: #636363;
   transition-duration: 0.25s;
+  z-index: 1000;
 }
 .button:hover .dice{
   fill: #393939;
@@ -351,6 +353,7 @@ font-weight: 600;
 .button:hover{
   box-shadow: 0px 4px 10px #808080;
   transition-duration: 0.25s;
+
 }
 
 
@@ -687,13 +690,15 @@ function makebiggerandsmaller(searchfocus){
   }
 }
 
-var x = setTimeout();
+
+
+var timeout;
 function coolgifs(){
-  clearTimeout(x);
+  clearTimeout(timeout);
   document.getElementById('coolcircle').src = "pictures/load"+Math.floor((Math.random() * 17) + 1)+".gif";
   document.getElementById('amancircle').style.display="none";
   document.getElementById('coolcircle').style.display="inline";
-  x = setTimeout(function() {
+  timeout = setTimeout(function() {
     document.getElementById('amancircle').style.display="inline";
     document.getElementById('coolcircle').style.display="none";
   }, 4000);
@@ -1135,21 +1140,18 @@ function loadingding() {
 <!-- END OF BODY -->
 <!-- AUDIOPLAYER -->
 <tr id="theaudiobar"><td colspan="2" height="50" style="background: #f5f5f5;animation: fadeIn 1s;">
-  <table class="fulltable"><tr>
+  <table border="0" class="fulltable"><tr>
     <td><audio id="audio" style="width: 100%;" controls><source id="audioSource" src="" type="audio/mpeg"></audio></td>
       <td width="50" align="center">
-        <svg id="playlistbot" class="botbuttonsgrey" enable-background="new 0 0 24 24" height="24"viewBox="0 0 24 24" width="24" x="0px" y="0px">
-          <g>
-	           <path d="M0,0h24v24H0V0z" fill="none"/>
-	            <g >
-		              <rect height="2" id="XMLID_3_" width="12" x="4" y="10"/>
-		                <rect height="2" id="XMLID_4_" width="12" x="4" y="6"/>
-		                <rect height="2" id="XMLID_5_" width="8" x="4" y="14"/>
-		              <polygon points="14,14 14,20 19,17   "/>
-	            </g>
-          </g>
-        </svg>
-</td>
+        <div class="dropup botbuttonsgrey">
+              <svg id="playlistbot" class="dropdown-toggle botbuttonsgrey" data-toggle="dropdown" enable-background="new 0 0 24 24" height="24"viewBox="0 0 24 24" width="24" x="0px" y="0px"><g id="XMLID_1_"><path d="M0,0h24v24H0V0z" fill="none"/><g id="XMLID_2_"><rect height="2" id="XMLID_3_" width="12" x="4" y="10"/><rect height="2" id="XMLID_4_" width="12" x="4" y="6"/><rect height="2" id="XMLID_5_" width="8" x="4" y="14"/><polygon id="XMLID_6_" points="14,14 14,20 19,17   "/></g></g></svg>
+                    <ul style="text-align: right;animation: fadeIn 0.325s;width:250px;" class="dropdown-menu dropdown-menu-right">
+                      <li style="align: center; text-align: center;">הפלייליסט של גילעד פדר</li>
+                      <li><a data-toggle="collapse"><text style="margin-right: 7px;">שם שיר - אומן&nbsp;</text><img style="margin-right: -10px;vertical-align: text-top;" src="icons/chev.png"></a></li>
+                      <li><a data-toggle="collapse"><text style="margin-right: 7px;">שם שיר - אומן&nbsp;</text><img style="margin-right: -10px;vertical-align: text-top;" src="icons/blank.png"></a></li>
+                    </ul>
+                  </div>
+      </td>
       <td width="50" align="center">
         <svg id="starbot" class="botbuttonsgrey" height="24" viewBox="0 0 24 24" width="24">
             <path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/>
