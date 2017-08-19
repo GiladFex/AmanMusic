@@ -17,11 +17,11 @@ TASTKS:
 
 * Getting metadata from audiofiles
 
-* Playlist - using addTextTrack().
+* Playlists.
 
 * Gesture+list in audiobar that there is a playlist. (num of songs playing can be achieved using textTracks.length
 
-* Saving users' starred songs in DB.
+* Personal starred songs.
 
 * smart search - by song name, singer, album or lyrics (if available).
 
@@ -42,8 +42,6 @@ TASTKS:
 	alt r - start shuffle.
 	
 	enter - start typing in chat box.
-	
-* keeping scrollbar of chat at bottom
 
 * unique hash url for playlists - and entering to the specific one if entered in url bar.
 
