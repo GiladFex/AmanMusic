@@ -427,13 +427,17 @@ font-weight: 600;
       var x = Math.floor((Math.random() * 2) + 1)
         playme.src = "songs/"+x+".mp3";
         document.title = x;
+        document.getElementById("recentactivity").innerHTML+= "גילעד פדר מנגן <b>"+x+"</b><br>";
     }
     else{
         playme.src='songs/'+name+'.mp3';
         document.title = name;
+        document.getElementById("recentactivity").innerHTML+= "גילעד פדר מנגן <b>"+name+"</b><br>";
     }
     playme.play();
+    $('#recentactivity').scrollTop($('#recentactivity')[0].scrollHeight);
   }
+  
   function star(TheID) {
           document.getElementById('star1').src='icons/cardstarfill.svg';
       }
@@ -691,7 +695,6 @@ function makebiggerandsmaller(searchfocus){
 }
 
 
-
 var timeout;
 function coolgifs(){
   clearTimeout(timeout);
@@ -711,6 +714,8 @@ function loadingding() {
       document.getElementById("realone").style.display="table";
     }, 1000+Math.floor(Math.random() * 2000));
 }
+
+
   </script>
 </head>
 <body style="user-drag: none; user-select: none;-moz-user-select: none;-webkit-user-drag: none;-webkit-user-select: none;-ms-user-select: none;" onresize="resizing();" onload="loadingding();onloading();searching();randchatcolor();resizing();">
@@ -807,8 +812,8 @@ function loadingding() {
   <tr style="background:rgba(255,255,255,1);animation: fadeIn 1s;"><td width="250" style="border-right: 1px solid #eceee7;">
 <!-- STALKING AND CHAT -->
   <table style="font-family: 'Assistant';" class="fulltable">
-    <tr><td height="150" style="border-bottom: 1px solid #eceee7;"><div style="direction:rtl;overflow-y:scroll;overflow-wrap:break-word;width:250;height:100%;padding:10px;">גילעד פדר מנגן <b>Perfect Places</b><br>איתי מאירי מנגן <b>YMCA</b></div></td></tr>
-    <tr><td><div style="direction:rtl;overflow-y:scroll;overflow-wrap:break-word;width:250;height:100%;padding:10px;"><b style="color:blue;">גילעד פדר:</b> היי.<br><b style="color:green;">איתי מאירי:</b> מה קורה?<br><b style="color:blue;">גילעד פדר:</b> בסדר.</div></td></tr>
+    <tr><td height="150" style="border-bottom: 1px solid #eceee7;"><div id="recentactivity" class="scrollbardown" style="direction:rtl;overflow-y:scroll;overflow-wrap:break-word;width:250;height:100%;padding:10px;"></div></td></tr>
+    <tr><td><div id="chat" style="direction:rtl;overflow-y:scroll;overflow-wrap:break-word;width:250;height:100%;padding:10px;"><b style="color:blue;">גילעד פדר:</b> היי.<br><b style="color:green;">איתי מאירי:</b> מה קורה?<br><b style="color:blue;">גילעד פדר:</b> בסדר.</div></td></tr>
     <tr><td height="1"><input id="chatting" style="background: #f0f0f0;direction:rtl;outline: none;border: 1px solid #eceee7;width: 100%;" placeholder="הצטרפ/י לשיחה!" type="text"></td></tr>
   </table></td>
 <!-- TACHLES -->
@@ -1145,10 +1150,10 @@ function loadingding() {
       <td width="50" align="center">
         <div class="dropup botbuttonsgrey">
               <svg id="playlistbot" class="dropdown-toggle botbuttonsgrey" data-toggle="dropdown" enable-background="new 0 0 24 24" height="24"viewBox="0 0 24 24" width="24" x="0px" y="0px"><g id="XMLID_1_"><path d="M0,0h24v24H0V0z" fill="none"/><g id="XMLID_2_"><rect height="2" id="XMLID_3_" width="12" x="4" y="10"/><rect height="2" id="XMLID_4_" width="12" x="4" y="6"/><rect height="2" id="XMLID_5_" width="8" x="4" y="14"/><polygon id="XMLID_6_" points="14,14 14,20 19,17   "/></g></g></svg>
-                    <ul style="text-align: right;animation: fadeIn 0.325s;width:250px;" class="dropdown-menu dropdown-menu-right">
-                      <li style="align: center; text-align: center;">הפלייליסט של גילעד פדר</li>
-                      <li><a data-toggle="collapse"><text style="margin-right: 7px;">שם שיר - אומן&nbsp;</text><img style="margin-right: -10px;vertical-align: text-top;" src="icons/chev.png"></a></li>
-                      <li><a data-toggle="collapse"><text style="margin-right: 7px;">שם שיר - אומן&nbsp;</text><img style="margin-right: -10px;vertical-align: text-top;" src="icons/blank.png"></a></li>
+                    <ul style="text-align: right;animation: fadeIn 0.325s;width:270px;" class="dropdown-menu dropdown-menu-right">
+                      <li style="align: center; text-align: center;font-weight: bold;font-size: 18px;">הפלייליסט של גילעד פדר</li>
+                      <li><a onclick="updateSource(1);" data-toggle="collapse"><text style="margin-right: 7px;">שם שיר - אומן&nbsp;</text><img style="margin-right: -10px;vertical-align: text-top;" src="icons/chev.png"></a></li>
+                      <li><a onclick="updateSource(2);" data-toggle="collapse"><text style="margin-right: 7px;">שם שיר - אומן&nbsp;</text><img style="margin-right: -10px;vertical-align: text-top;" src="icons/blank.png"></a></li>
                     </ul>
                   </div>
       </td>
