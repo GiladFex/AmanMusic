@@ -437,7 +437,7 @@ font-weight: 600;
     playme.play();
     $('#recentactivity').scrollTop($('#recentactivity')[0].scrollHeight);
   }
-  
+
   function star(TheID) {
           document.getElementById('star1').src='icons/cardstarfill.svg';
       }
@@ -715,7 +715,12 @@ function loadingding() {
     }, 1000+Math.floor(Math.random() * 2000));
 }
 
+function chatUpdate() {
+  document.getElementById('chat').innerHTML += "<font style='color:"+document.getElementById("input-color").value+";font-weight:bold;' >גילעד פדר:</font> "+ document.getElementById('chatting').value+"<br>";
+  document.getElementById("chatting").value = null;
+  document.getElementById("chat").scrollTop = document.getElementById("chat").scrollHeight;
 
+}
   </script>
 </head>
 <body style="user-drag: none; user-select: none;-moz-user-select: none;-webkit-user-drag: none;-webkit-user-select: none;-ms-user-select: none;" onresize="resizing();" onload="loadingding();onloading();searching();randchatcolor();resizing();">
@@ -813,8 +818,8 @@ function loadingding() {
 <!-- STALKING AND CHAT -->
   <table style="font-family: 'Assistant';" class="fulltable">
     <tr><td height="150" style="border-bottom: 1px solid #eceee7;"><div id="recentactivity" class="scrollbardown" style="direction:rtl;overflow-y:scroll;overflow-wrap:break-word;width:250;height:100%;padding:10px;"></div></td></tr>
-    <tr><td><div id="chat" style="direction:rtl;overflow-y:scroll;overflow-wrap:break-word;width:250;height:100%;padding:10px;"><b style="color:blue;">גילעד פדר:</b> היי.<br><b style="color:green;">איתי מאירי:</b> מה קורה?<br><b style="color:blue;">גילעד פדר:</b> בסדר.</div></td></tr>
-    <tr><td height="1"><input id="chatting" style="background: #f0f0f0;direction:rtl;outline: none;border: 1px solid #eceee7;width: 100%;" placeholder="הצטרפ/י לשיחה!" type="text"></td></tr>
+    <tr><td><div id="chat" style="direction:rtl;overflow-y:scroll;overflow-wrap:break-word;width:250;height:100%;padding:10px;"></div></td></tr>
+    <tr><td height="1"><input onkeydown = "if (event.keyCode == 13) chatUpdate();" id="chatting" style="background: #f0f0f0;direction:rtl;outline: none;border: 1px solid #eceee7;width: 100%;" placeholder="הצטרפ/י לשיחה!" type="text"></td></tr>
   </table></td>
 <!-- TACHLES -->
 <!-- 404 ERROR -->
@@ -1150,9 +1155,21 @@ function loadingding() {
       <td width="50" align="center">
         <div class="dropup botbuttonsgrey">
               <svg id="playlistbot" class="dropdown-toggle botbuttonsgrey" data-toggle="dropdown" enable-background="new 0 0 24 24" height="24"viewBox="0 0 24 24" width="24" x="0px" y="0px"><g id="XMLID_1_"><path d="M0,0h24v24H0V0z" fill="none"/><g id="XMLID_2_"><rect height="2" id="XMLID_3_" width="12" x="4" y="10"/><rect height="2" id="XMLID_4_" width="12" x="4" y="6"/><rect height="2" id="XMLID_5_" width="8" x="4" y="14"/><polygon id="XMLID_6_" points="14,14 14,20 19,17   "/></g></g></svg>
-                    <ul style="text-align: right;animation: fadeIn 0.325s;width:270px;" class="dropdown-menu dropdown-menu-right">
+                    <ul style="text-align: right;animation: fadeIn 0.325s;width:270px;overflow-y: scroll;max-height: 350px;" class="dropdown-menu dropdown-menu-right">
                       <li style="align: center; text-align: center;font-weight: bold;font-size: 18px;">הפלייליסט של גילעד פדר</li>
-                      <li><a onclick="updateSource(1);" data-toggle="collapse"><text style="margin-right: 7px;">שם שיר - אומן&nbsp;</text><img style="margin-right: -10px;vertical-align: text-top;" src="icons/chev.png"></a></li>
+                      <li><a onclick="updateSource(2);" data-toggle="collapse"><text style="margin-right: 7px;">שם שיר - אומן&nbsp;</text><img style="margin-right: -10px;vertical-align: text-top;" src="icons/blank.png"></a></li>
+                      <li><a onclick="updateSource(2);" data-toggle="collapse"><text style="margin-right: 7px;">שם שיר - אומן&nbsp;</text><img style="margin-right: -10px;vertical-align: text-top;" src="icons/blank.png"></a></li>
+                      <li><a onclick="updateSource(2);" data-toggle="collapse"><text style="margin-right: 7px;">שם שיר - אומן&nbsp;</text><img style="margin-right: -10px;vertical-align: text-top;" src="icons/blank.png"></a></li>
+                      <li><a onclick="updateSource(2);" data-toggle="collapse"><text style="margin-right: 7px;">שם שיר - אומן&nbsp;</text><img style="margin-right: -10px;vertical-align: text-top;" src="icons/blank.png"></a></li>
+                      <li><a onclick="updateSource(2);" data-toggle="collapse"><text style="margin-right: 7px;">שם שיר - אומן&nbsp;</text><img style="margin-right: -10px;vertical-align: text-top;" src="icons/blank.png"></a></li>
+                      <li><a onclick="updateSource(2);" data-toggle="collapse"><text style="margin-right: 7px;">שם שיר - אומן&nbsp;</text><img style="margin-right: -10px;vertical-align: text-top;" src="icons/blank.png"></a></li>
+                      <li style="background: #ececec;"><a onclick="updateSource(1);" data-toggle="collapse"><text style="margin-right: 7px;">שם שיר - אומן&nbsp;</text><img style="margin-right: -10px;vertical-align: text-top;" src="icons/chev.png"></a></li>
+                      <li><a onclick="updateSource(2);" data-toggle="collapse"><text style="margin-right: 7px;">שם שיר - אומן&nbsp;</text><img style="margin-right: -10px;vertical-align: text-top;" src="icons/blank.png"></a></li>
+                      <li><a onclick="updateSource(2);" data-toggle="collapse"><text style="margin-right: 7px;">שם שיר - אומן&nbsp;</text><img style="margin-right: -10px;vertical-align: text-top;" src="icons/blank.png"></a></li>
+                      <li><a onclick="updateSource(2);" data-toggle="collapse"><text style="margin-right: 7px;">שם שיר - אומן&nbsp;</text><img style="margin-right: -10px;vertical-align: text-top;" src="icons/blank.png"></a></li>
+                      <li><a onclick="updateSource(2);" data-toggle="collapse"><text style="margin-right: 7px;">שם שיר - אומן&nbsp;</text><img style="margin-right: -10px;vertical-align: text-top;" src="icons/blank.png"></a></li>
+                      <li><a onclick="updateSource(2);" data-toggle="collapse"><text style="margin-right: 7px;">שם שיר - אומן&nbsp;</text><img style="margin-right: -10px;vertical-align: text-top;" src="icons/blank.png"></a></li>
+                      <li><a onclick="updateSource(2);" data-toggle="collapse"><text style="margin-right: 7px;">שם שיר - אומן&nbsp;</text><img style="margin-right: -10px;vertical-align: text-top;" src="icons/blank.png"></a></li>
                       <li><a onclick="updateSource(2);" data-toggle="collapse"><text style="margin-right: 7px;">שם שיר - אומן&nbsp;</text><img style="margin-right: -10px;vertical-align: text-top;" src="icons/blank.png"></a></li>
                     </ul>
                   </div>
