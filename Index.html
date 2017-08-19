@@ -715,12 +715,22 @@ function loadingding() {
     }, 1000+Math.floor(Math.random() * 2000));
 }
 
+var timing, lastsent = null, diff;
 function chatUpdate() {
-  document.getElementById('chat').innerHTML += "<font style='color:"+document.getElementById("input-color").value+";font-weight:bold;' >גילעד פדר:</font> "+ document.getElementById('chatting').value+"<br>";
-  document.getElementById("chatting").value = null;
-  document.getElementById("chat").scrollTop = document.getElementById("chat").scrollHeight;
-
+  timing = new Date();
+  diff = timing - lastsent;
+  if (diff>1000){ //not to spam more than 1 message per second.
+    document.getElementById('chat').innerHTML += "<font style='color:"+document.getElementById("input-color").value+";font-weight:bold;' >גילעד פדר:</font> "+document.getElementById('chatting').value+"<br>";
+    document.getElementById("chatting").value = null;
+    document.getElementById("chat").scrollTop = document.getElementById("chat").scrollHeight;
+  lastsent = new Date();
+  }
+  else{
+    document.getElementById('chat').innerHTML += "<font style='font-weight: bold;text-decoration: underline;color:red;text-align: center;'>נא לא להספים את הצ'אט.</font><br>"
+  }
 }
+
+
   </script>
 </head>
 <body style="user-drag: none; user-select: none;-moz-user-select: none;-webkit-user-drag: none;-webkit-user-select: none;-ms-user-select: none;" onresize="resizing();" onload="loadingding();onloading();searching();randchatcolor();resizing();">
