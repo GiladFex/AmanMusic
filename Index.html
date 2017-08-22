@@ -38,7 +38,7 @@
 
 
  h1{
-   font-family: 'Assistant', sans-serif;
+   font-family: 'Assistant';
    color: #000000 !important;
    font-size: 1.2em !important;
    margin-top:1px !important;
@@ -354,14 +354,123 @@ font-weight: 600;
   transition-duration: 0.25s;
 
 }
+.starredtable {
+  border-collapse:collapse;
+  padding: 0px;
+  margin: 0px;
+  height:auto;
+  width:95%;
+  text-align: center;
+  height: auto;
+  background: linear-gradient(to right,  #ffffff 0%,#f1f1f1 50%,#ffffff 100%);
+}
+.starredtable tr {
+  height: 110px;
+   background: linear-gradient(0deg,  transparent 1px, white 1px, white calc(100% - 1px), transparent 1px);
+}
+.starredtable tr:hover {
+  background: linear-gradient(to right,  #ffffff 0%,#f1f1f1 50%,#ffffff 100%);
+}
+.starredtablealbum{
+  height: 90px;
+  border-radius: 3px;
+}
+.stardescs{
+  text-align: right;
+  font-size: 24px;
+  padding: 0px 10px 0px 0px;
+}
 
+/* playlist cards and buttons */
+.wrapper{
+  height: 12em;
+  width: 8em;
+  position: relative;
+}
 
+.folderdiv{
+  height: 8em;
+  width: 8em;
+  transition: all .4s ease;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: .8em;
+ box-shadow: 0px 0px 3px #999;
+}
+
+.wrapper:hover .folderdiv{
+  filter: brightness(30%);
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.wrapper .playlistplayit {
+  position: absolute;
+  left: 30;
+  top: 25;
+  display: none;
+}
+.wrapper .playlistgoit {
+  position: absolute;
+  left: 5;
+  top: 50;
+  display: none;
+}
+
+.wrapper .playlistshuffleit {
+  position: absolute;
+  left: 100;
+  top: 50;
+  display: none;
+}
+.wrapper:hover .playlistplayit  {
+  display: inline;
+  z-index: 400;
+}
+.wrapper:hover .playlistshuffleit  {
+  display: inline;
+  z-index: 400;
+}
+
+.wrapper:hover .playlistgoit  {
+  display: inline;
+  z-index: 400;
+}
+
+.imginplaylist{
+border-radius:.4em;
+align-items: left;
+margin-top: 8px;
+margin-right: 8px;
+margin-left: 2px;
+float: right;
+}
+
+.nameofplaylist{
+margin-top: 1em;
+text-align: center;
+font-family:  'Assistant';
+font-weight: 800;
+font-size: 18px;
+}
+
+.playlistbtn{
+  fill: rgba(255,255,255,0.6);
+  transition-duration: 0.375s;
+  cursor: pointer;
+
+}
+
+.playlistbtn:hover{
+  fill: rgba(255,255,255,1);
+  transition-duration: 0.375s;
+}
+
+/*end of playlist buttons*/
   </style>
   <script>
 
   function onloading(){
     var flag=false; //in case it's a 404.
-    if ((location.hash=="#Home")||(location.hash=="")){
+    if ((location.hash=="#Home")||(location.hash=="")||(location.hash==null)){
       show(0);
       flag = true;
     }
@@ -739,7 +848,7 @@ function isvalidcolor(){
   g = parseInt(hex.substring(2,4), 16);
   b = parseInt(hex.substring(4,6), 16);
   lum = (r+r+b+g+g+g)/6;
-  if (lum>151){
+  if (lum>191){
     $("#colorproblem").fadeIn("slow");
      document.getElementById("input-color").value = savedcolor;
     setTimeout(function(){ $("#colorproblem").fadeOut("slow"); }, 3000);
@@ -828,7 +937,7 @@ function isvalidcolor(){
                 <path d="M0 0h24v24H0z" fill="none"/>
             </svg>
           </td>
-          <td width="77" align="left" valign="middle" style="padding-top: 5px;"><img src="pictures/logo3.png"></td>
+          <td width="77" align="left" valign="middle" style="padding-top: 5px;"><img style="cursor: pointer;" onclick="show(0);" src="pictures/logo3.png"></td>
           <td width="80" align="left" valign="middle">
             <div class="imageWrap">
     <img id="amancircle" style="display:inline;animation: fadeIn 2s;" onclick="coolgifs();" class="img-circle" height="60" src="pictures/logo4.png">
@@ -844,7 +953,7 @@ function isvalidcolor(){
   <tr style="background:rgba(255,255,255,1);animation: fadeIn 1s;"><td width="250" style="border-right: 1px solid #eceee7;">
 <!-- STALKING AND CHAT -->
   <table style="font-family: 'Assistant';" class="fulltable">
-    <tr><td height="150" style="border-bottom: 1px solid #eceee7;"><div id="recentactivity" class="scrollbardown" style="direction:rtl;overflow-y:scroll;overflow-wrap:break-word;width:250;height:100%;padding:10px;"></div></td></tr>
+    <tr><td height="150" style="border-bottom: 1px solid #eceee7;"><div id="recentactivity" style="direction:rtl;overflow-y:scroll;overflow-wrap:break-word;width:250;height:100%;padding:10px;"></div></td></tr>
     <tr><td><div id="chat" style="direction:rtl;overflow-y:scroll;overflow-wrap:break-word;width:250;height:100%;padding:10px;"></div></td></tr>
     <tr><td height="1"><input onkeydown = "if (event.keyCode == 13) chatUpdate();" id="chatting" style="background: #f0f0f0;direction:rtl;outline: none;border: 1px solid #eceee7;width: 100%;" placeholder="הצטרפ/י לשיחה!" type="text"></td></tr>
   </table></td>
@@ -888,7 +997,7 @@ function isvalidcolor(){
     <img width="230" class="movcardphoto" src="pictures/mov1.jpg"></div>
     <div class="movplayit">
     <svg class="movplay movcardbtn" onclick="playingmovie('movies/1.mp4');" fill="#000000" height="120" viewBox="0 0 24 24" width="120"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></div>
-    </div><div class="movname"><h1><div class="movoverflowing">Fight Club</div></h1><div class="movgenre"><h2>דרמה</h2></div></td></tr></table></div>
+    </div><div class="movname"><h1><div class="movoverflowing">Fight Club</div></h1><div class="movgenre"><h2>דרמה</h2></div></td></tr></div></table>
   </td>
   <td align="center">
     <table align="center" class="movcard">
@@ -897,7 +1006,7 @@ function isvalidcolor(){
     <img width="230" class="movcardphoto" src="pictures/mov2.jpg"></div>
     <div class="movplayit">
     <svg class="movplay movcardbtn" onclick="playingmovie('movies/1.mp4');" fill="#000000" height="120" viewBox="0 0 24 24" width="120"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></div>
-    </div><div class="movname"><h1><div class="movoverflowing">שרק</div></h1><div class="movgenre"><h2>קומדיה</h2></div></td></tr></table></div>
+    </div><div class="movname"><h1><div class="movoverflowing">שרק</div></h1><div class="movgenre"><h2>קומדיה</h2></div></td></tr></div></table>
   </td>
   <td align="center">
     <table align="center" class="movcard">
@@ -906,7 +1015,7 @@ function isvalidcolor(){
     <img width="230" class="movcardphoto" src="pictures/mov3.jpg"></div>
     <div class="movplayit">
     <svg class="movplay movcardbtn" onclick="playingmovie('movies/1.mp4');" fill="#000000" height="120" viewBox="0 0 24 24" width="120"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></div>
-    </div><div class="movname"><h1><div class="movoverflowing">אפס ביחסי אנוש</div></h1><div class="movgenre"><h2>קומדיה</h2></div></td></tr></table></div>
+    </div><div class="movname"><h1><div class="movoverflowing">אפס ביחסי אנוש</div></h1><div class="movgenre"><h2>קומדיה</h2></div></td></tr></div></table>
   </td>
   <td align="center">
     <table align="center" class="movcard">
@@ -915,7 +1024,7 @@ function isvalidcolor(){
     <img width="230" class="movcardphoto" src="pictures/mov4.jpg"></div>
     <div class="movplayit">
     <svg class="movplay movcardbtn" onclick="playingmovie('movies/1.mp4');" fill="#000000" height="120" viewBox="0 0 24 24" width="120"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></div>
-  </div><div class="movname"><h1><div class="movoverflowing">טיטאניק</div></h1><div class="movgenre"><h2>דרמה</h2></div></td></tr></table></div>
+  </div><div class="movname"><h1><div class="movoverflowing">טיטאניק</div></h1><div class="movgenre"><h2>דרמה</h2></div></td></tr></div></table>
   </td>
   <td align="center">
     <table align="center" class="movcard">
@@ -924,7 +1033,7 @@ function isvalidcolor(){
     <img width="230" class="movcardphoto" src="pictures/mov5.jpg"></div>
     <div class="movplayit">
     <svg class="movplay movcardbtn" onclick="playingmovie('movies/1.mp4');" fill="#000000" height="120" viewBox="0 0 24 24" width="120"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></div>
-  </div><div class="movname"><h1><div class="movoverflowing">הארי פוטר ואוצרות המוות 2</div></h1><div class="movgenre"><h2>פנטזיה</h2></div></td></tr></table></div>
+  </div><div class="movname"><h1><div class="movoverflowing">הארי פוטר ואוצרות המוות 2</div></h1><div class="movgenre"><h2>פנטזיה</h2></div></td></tr></div></table>
   </td>
 </tr>
 <tr>
@@ -935,7 +1044,7 @@ function isvalidcolor(){
     <img width="230" class="movcardphoto" src="pictures/mov6.jpg"></div>
     <div class="movplayit">
     <svg class="movplay movcardbtn" onclick="playingmovie('movies/1.mp4');" fill="#000000" height="120" viewBox="0 0 24 24" width="120"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></div>
-  </div><div class="movname"><h1><div class="movoverflowing">מבצע סבתא</div></h1><div class="movgenre"><h2>קומדיה</h2></div></td></tr></table></div>
+  </div><div class="movname"><h1><div class="movoverflowing">מבצע סבתא</div></h1><div class="movgenre"><h2>קומדיה</h2></div></td></tr></div></table>
   </td>
   <td align="center">
     <table align="center" class="movcard">
@@ -944,7 +1053,7 @@ function isvalidcolor(){
     <img width="230" class="movcardphoto" src="pictures/mov7.jpg"></div>
     <div class="movplayit">
     <svg class="movplay movcardbtn" onclick="playingmovie('movies/1.mp4');" fill="#000000" height="120" viewBox="0 0 24 24" width="120"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></div>
-  </div><div class="movname"><h1><div class="movoverflowing">דדפול</div></h1><div class="movgenre"><h2>קומדיה</h2></div></td></tr></table></div>
+  </div><div class="movname"><h1><div class="movoverflowing">דדפול</div></h1><div class="movgenre"><h2>קומדיה</h2></div></td></tr></div></table>
   </td>
   <td align="center">
     <table align="center" class="movcard">
@@ -953,7 +1062,7 @@ function isvalidcolor(){
     <img width="230" class="movcardphoto" src="pictures/mov8.jpg"></div>
     <div class="movplayit">
     <svg class="movplay movcardbtn" onclick="playingmovie('movies/1.mp4');" fill="#000000" height="120" viewBox="0 0 24 24" width="120"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></div>
-  </div><div class="movname"><h1><div class="movoverflowing">משחקי החיקוי</div></h1><div class="movgenre"><h2>דרמה</h2></div></td></tr></table></div>
+  </div><div class="movname"><h1><div class="movoverflowing">משחקי החיקוי</div></h1><div class="movgenre"><h2>דרמה</h2></div></td></tr></div></table>
   </td>
   <td align="center">
     <table align="center" class="movcard">
@@ -962,7 +1071,7 @@ function isvalidcolor(){
     <img width="230" class="movcardphoto" src="pictures/mov9.jpg"></div>
     <div class="movplayit">
     <svg class="movplay movcardbtn" onclick="playingmovie('movies/1.mp4');" fill="#000000" height="120" viewBox="0 0 24 24" width="120"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></div>
-  </div><div class="movname"><h1><div class="movoverflowing">הזאב מוולסטריט</div></h1><div class="movgenre"><h2>דרמה</h2></div></td></tr></table></div>
+  </div><div class="movname"><h1><div class="movoverflowing">הזאב מוולסטריט</div></h1><div class="movgenre"><h2>דרמה</h2></div></td></tr></div></table>
   </td>
   <td align="center">
     <table align="center" class="movcard">
@@ -971,7 +1080,7 @@ function isvalidcolor(){
     <img width="230" class="movcardphoto" src="pictures/mov10.png"></div>
     <div class="movplayit">
     <svg class="movplay movcardbtn" onclick="playingmovie('movies/1.mp4');" fill="#000000" height="120" viewBox="0 0 24 24" width="120"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg></div>
-  </div><div class="movname"><h1><div class="movoverflowing">היפה והחיה</div></h1><div class="movgenre"><h2>פנטזיה</h2></div></td></tr></table></div>
+  </div><div class="movname"><h1><div class="movoverflowing">היפה והחיה</div></h1><div class="movgenre"><h2>פנטזיה</h2></div></td></tr></div></table>
   </td>
 </tr>
 </table>
@@ -987,10 +1096,156 @@ function isvalidcolor(){
 </td>
 <!-- END OF MOVIES -->
 <!-- STARRED SONGS -->
-<td style="display: none;animation: fadeIn 1s;" valign="top" dir="rtl" id="starry" bgcolor="white">STARRED SONGS</td>
+<td style="display: none;animation: fadeIn 1s;" valign="top" align="center" dir="rtl" id="starry" bgcolor="white"><div style="direction:rtl;overflow-y:scroll;overflow-wrap:break-word;width:100%;height:100%;">
+<table width="95%" height="36">
+  <tr><td width="100%" style="text-align: center;font-size:20px;background: linear-gradient(to right,  #fff 0%,#444444 50%,#fff 100%);color: white;">הכוכבים של גילעד פדר&nbsp;
+
+<svg class="pull-right" style="margin-top: 3px;margin-right: 10px;" fill="#000000" height="24" viewBox="0 0 24 24" width="24" data-toggle="tooltip" data-placement="bottom" title="הפוך לציבורי">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+</svg>
+  </td></tr>
+</table>
+<br>
+<table border="0" class="starredtable">
+<tr><td width="1">
+<svg onclick="updateSource(1)" fill="#444444" height="48" viewBox="0 0 24 24" width="48"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg></td><td width="10%"><img class="starredtablealbum pull-left" src="pictures/album.png"></td><td align="right" class="stardescs">When We Were Young<br>Adele</td><td><svg fill="#444444" height="36" viewBox="0 0 24 24" width="36"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/><path d="M0 0h24v24H0z" fill="none"/></svg></td></tr>
+<tr><td>
+<svg onclick="updateSource(1)"  fill="#444444" height="48" viewBox="0 0 24 24" width="48"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg></td><td><img class="starredtablealbum pull-left" src="pictures/album2.jpg"></td><td align="right" class="stardescs">Perfect Places<br>Lorde</td><td><svg fill="#444444" height="36" viewBox="0 0 24 24" width="36"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/><path d="M0 0h24v24H0z" fill="none"/></svg></td></tr>
+<tr><td>
+<svg onclick="updateSource(1)"  fill="#444444" height="48" viewBox="0 0 24 24" width="48"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg></td><td><img class="starredtablealbum pull-left" src="pictures/album3.png"></td><td align="right" class="stardescs">Shape of You<br>Ed Sheeran</td><td><svg fill="#444444" height="36" viewBox="0 0 24 24" width="36"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/><path d="M0 0h24v24H0z" fill="none"/></svg></td></tr>
+<tr><td>
+<svg onclick="updateSource(1)"  fill="#444444" height="48" viewBox="0 0 24 24" width="48"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg></td><td><img class="starredtablealbum pull-left" src="pictures/album4.jpg"></td><td align="right" class="stardescs">Where You Are<br>Moana Soundtrack</td><td><svg fill="#444444" height="36" viewBox="0 0 24 24" width="36"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/><path d="M0 0h24v24H0z" fill="none"/></svg></td></tr>
+<tr><td>
+<svg onclick="updateSource(1)"  fill="#444444" height="48" viewBox="0 0 24 24" width="48"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg></td><td><img class="starredtablealbum pull-left" src="pictures/album5.png"></td><td align="right" class="stardescs">24K Magic<br>Bruno Mars</td><td><svg fill="#444444" height="36" viewBox="0 0 24 24" width="36"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/><path d="M0 0h24v24H0z" fill="none"/></svg></td></tr>
+<tr><td>
+<svg onclick="updateSource(1)"  fill="#444444" height="48" viewBox="0 0 24 24" width="48"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg></td><td><img class="starredtablealbum pull-left" src="pictures/album6.png"></td><td align="right" class="stardescs">Daft Punk<br>Pentatonix</td><td><svg fill="#444444" height="36" viewBox="0 0 24 24" width="36"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/><path d="M0 0h24v24H0z" fill="none"/></svg></td></tr>
+<tr><td>
+<svg onclick="updateSource(1)"  fill="#444444" height="48" viewBox="0 0 24 24" width="48"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg></td><td><img class="starredtablealbum pull-left" src="pictures/album7.png"></td><td align="right" class="stardescs">One More Time<br>Arianna Grande</td><td><svg fill="#444444" height="36" viewBox="0 0 24 24" width="36"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/><path d="M0 0h24v24H0z" fill="none"/></svg></td></tr>
+<tr><td>
+<svg onclick="updateSource(1)"  fill="#444444" height="48" viewBox="0 0 24 24" width="48"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg></td><td><img class="starredtablealbum pull-left" src="pictures/album8.jpg"></td><td align="right" class="stardescs">ממעמקים<br>עידן רייכל</td><td><svg fill="#444444" height="36" viewBox="0 0 24 24" width="36"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/><path d="M0 0h24v24H0z" fill="none"/></svg></td></tr>
+</table>
+
+</div></td>
 <!-- END OF STARRED SONGS -->
 <!-- PLAYLISTS -->
-<td style="display: none;animation: fadeIn 1s;" valign="top" dir="rtl" id="playlisty" bgcolor="white">PLAYLISTS</td>
+<td style="display: none;animation: fadeIn 1s;" valign="top" align="center" dir="rtl" id="playlisty" bgcolor="white"><div style="direction:rtl;overflow-y:scroll;overflow-wrap:break-word;width:100%;height:100%;">
+  <table width="95%" height="36">
+    <tr><td width="100%" style="text-align: center;font-size:20px;background: linear-gradient(to right,  #fff 0%,#444444 50%,#fff 100%);color: white;">פלייליסטים&nbsp;
+
+  <svg class="pull-right" style="margin-top: 3px;margin-right: 10px;" fill="#000000" height="24" viewBox="0 0 24 24" width="24" data-toggle="tooltip" data-placement="bottom" title="צור פלייליסט">
+    <path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+    </svg>
+    </td></tr>
+  </table>
+  <br>
+  <table dir="rtl" border="0" style="height: auto;" class="fulltable">
+  <tr>
+  <td align="center" width="130">
+  <div class="wrapper">
+  <div class="playlistplayit">
+  <svg class="play playlistbtn" onclick="updateSource(1);" height="72" viewBox="0 0 24 24" width="72"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+  </div>
+  <div class="playlistshuffleit">
+  <svg class="playlistbtn" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"></svg></div>
+  <div class="playlistgoit">
+  <svg class="playlistbtn" fill="#000000" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></div>
+  <div class="folderdiv">
+  <img class="imginplaylist" height="30" src="pictures/album.png">
+  <img class="imginplaylist" height="30" src="pictures/album2.jpg">
+  <img class="imginplaylist" height="30" src="pictures/album3.png">
+  <img class="imginplaylist" height="30" src="pictures/album4.jpg">
+  <img class="imginplaylist" height="30" src="pictures/album5.png">
+  <img class="imginplaylist" height="30" src="pictures/album6.png">
+  <img class="imginplaylist" height="30" src="pictures/album7.png">
+  <img class="imginplaylist" height="30" src="pictures/album8.jpg">
+  </div><div class="nameofplaylist">הכוכבים של גילעד פדר<font style="color:grey; font-size: 12px;">(12 שירים, 15:40)</font></div></div>
+  </td>
+  <td align="center" width="130">
+  <div class="wrapper">
+  <div class="playlistplayit">
+  <svg class="play playlistbtn" onclick="updateSource(1);" height="72" viewBox="0 0 24 24" width="72"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+  </div>
+  <div class="playlistshuffleit">
+  <svg class="playlistbtn" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"></svg></div>
+  <div class="playlistgoit">
+  <svg class="playlistbtn" fill="#000000" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></div>
+  <div class="folderdiv">
+  <img class="imginplaylist" height="30" src="pictures/album.png">
+  <img class="imginplaylist" height="30" src="pictures/album2.jpg">
+  <img class="imginplaylist" height="30" src="pictures/album3.png">
+  <img class="imginplaylist" height="30" src="pictures/album4.jpg">
+  <img class="imginplaylist" height="30" src="pictures/album5.png">
+  <img class="imginplaylist" height="30" src="pictures/album6.png">
+  <img class="imginplaylist" height="30" src="pictures/album7.png">
+  <img class="imginplaylist" height="30" src="pictures/album8.jpg">
+  </div><div class="nameofplaylist">הכוכבים של גילעד פדר<font style="color:grey; font-size: 12px;">(12 שירים, 15:40)</font></div></div>
+  </td>
+  <td align="center" width="130">
+  <div class="wrapper">
+  <div class="playlistplayit">
+  <svg class="play playlistbtn" onclick="updateSource(1);" height="72" viewBox="0 0 24 24" width="72"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+  </div>
+  <div class="playlistshuffleit">
+  <svg class="playlistbtn" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"></svg></div>
+  <div class="playlistgoit">
+  <svg class="playlistbtn" fill="#000000" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></div>
+  <div class="folderdiv">
+  <img class="imginplaylist" height="30" src="pictures/album.png">
+  <img class="imginplaylist" height="30" src="pictures/album2.jpg">
+  <img class="imginplaylist" height="30" src="pictures/album3.png">
+  <img class="imginplaylist" height="30" src="pictures/album4.jpg">
+  <img class="imginplaylist" height="30" src="pictures/album5.png">
+  <img class="imginplaylist" height="30" src="pictures/album6.png">
+  <img class="imginplaylist" height="30" src="pictures/album7.png">
+  <img class="imginplaylist" height="30" src="pictures/album8.jpg">
+  </div><div class="nameofplaylist">הכוכבים של גילעד פדר<font style="color:grey; font-size: 12px;">(12 שירים, 15:40)</font></div></div>
+  </td>
+  <td align="center" width="130">
+  <div class="wrapper">
+  <div class="playlistplayit">
+  <svg class="play playlistbtn" onclick="updateSource(1);" height="72" viewBox="0 0 24 24" width="72"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+  </div>
+  <div class="playlistshuffleit">
+  <svg class="playlistbtn" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"></svg></div>
+  <div class="playlistgoit">
+  <svg class="playlistbtn" fill="#000000" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></div>
+  <div class="folderdiv">
+  <img class="imginplaylist" height="30" src="pictures/album.png">
+  <img class="imginplaylist" height="30" src="pictures/album2.jpg">
+  <img class="imginplaylist" height="30" src="pictures/album3.png">
+  <img class="imginplaylist" height="30" src="pictures/album4.jpg">
+  <img class="imginplaylist" height="30" src="pictures/album5.png">
+  <img class="imginplaylist" height="30" src="pictures/album6.png">
+  <img class="imginplaylist" height="30" src="pictures/album7.png">
+  <img class="imginplaylist" height="30" src="pictures/album8.jpg">
+  </div><div class="nameofplaylist">הכוכבים של גילעד פדר<font style="color:grey; font-size: 12px;">(12 שירים, 15:40)</font></div></div>
+  </td>
+  <td align="center" width="130">
+  <div class="wrapper">
+  <div class="playlistplayit">
+  <svg class="play playlistbtn" onclick="updateSource(1);" height="72" viewBox="0 0 24 24" width="72"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+  </div>
+  <div class="playlistshuffleit">
+  <svg class="playlistbtn" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"></svg></div>
+  <div class="playlistgoit">
+  <svg class="playlistbtn" fill="#000000" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/></svg></div>
+  <div class="folderdiv">
+  <img class="imginplaylist" height="30" src="pictures/album.png">
+  <img class="imginplaylist" height="30" src="pictures/album2.jpg">
+  <img class="imginplaylist" height="30" src="pictures/album3.png">
+  <img class="imginplaylist" height="30" src="pictures/album4.jpg">
+  <img class="imginplaylist" height="30" src="pictures/album5.png">
+  <img class="imginplaylist" height="30" src="pictures/album6.png">
+  <img class="imginplaylist" height="30" src="pictures/album7.png">
+  <img class="imginplaylist" height="30" src="pictures/album8.jpg">
+  </div><div class="nameofplaylist">הכוכבים של גילעד פדר<font style="color:grey; font-size: 12px;">(12 שירים, 15:40)</font></div></div>
+  </td>
+  </tr>
+  </table>
+</div>
+</td>
 <!-- END OF PLAYLIST -->
 <!-- HOME -->
 <td style="display:table-cell;animation: fadeIn 1s;" id="homey" bgcolor="white">
@@ -1001,13 +1256,12 @@ function isvalidcolor(){
     <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM7.5 18c-.83 0-1.5-.67-1.5-1.5S6.67 15 7.5 15s1.5.67 1.5 1.5S8.33 18 7.5 18zm0-9C6.67 9 6 8.33 6 7.5S6.67 6 7.5 6 9 6.67 9 7.5 8.33 9 7.5 9zm4.5 4.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4.5 4.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm0-9c-.83 0-1.5-.67-1.5-1.5S15.67 6 16.5 6s1.5.67 1.5 1.5S17.33 9 16.5 9z"/>
 </svg></span>
 </a>
-  <table class="fulltable">
-    <tr><td><table dir="rtl" border="0" class="fulltable">
+<table dir="rtl" border="0" class="fulltable">
 
       <tr>
         <td width="20%">
           <table align="center" class="card">
-          <tr><td align="center"> <div class="albumart">
+          <tr><td align="center"> <div class="albumart album">
           <div class="album">
           <img height="230" class="cardphoto" src="pictures/album.png"></div>
           <div class="playit">
@@ -1018,7 +1272,7 @@ function isvalidcolor(){
           </div>
           <div class="playlistit">
           <svg class="playlist cardbtn" height="36" viewBox="0 0 24 24" width="36"><path d="M0 0h24v24H0z" fill="none"/><path d="M14 10H2v2h12v-2zm0-4H2v2h12V6zm4 8v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 16h8v-2H2v2z"/></svg>
-          </div><div class="songname"><h1><div class="overflowing">When We Were Young</div></h1><div class="artistname"><h2>Adele</h2></div></td></tr></table></div>
+          </div><div class="songname"><h1><div class="overflowing">When We Were Young</div></h1><div class="artistname"><h2>Adele</h2></div></td></tr></div></div></table>
       </td>
 
       <td width="20%">
@@ -1034,7 +1288,7 @@ function isvalidcolor(){
         </div>
         <div class="playlistit">
         <svg class="playlist cardbtn" height="36" viewBox="0 0 24 24" width="36"><path d="M0 0h24v24H0z" fill="none"/><path d="M14 10H2v2h12v-2zm0-4H2v2h12V6zm4 8v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 16h8v-2H2v2z"/></svg>
-        </div><div class="songname"><h1><div class="overflowing">Perfect Places</div></h1><div class="artistname"><h2>Lorde</h2></div></td></tr></table></div>
+        </div><div class="songname"><h1><div class="overflowing">Perfect Places</div></h1><div class="artistname"><h2>Lorde</h2></div></td></tr></div></div></table>
     </td>
 
     <td width="20%">
@@ -1050,7 +1304,7 @@ function isvalidcolor(){
       </div>
       <div class="playlistit">
       <svg class="playlist cardbtn" height="36" viewBox="0 0 24 24" width="36"><path d="M0 0h24v24H0z" fill="none"/><path d="M14 10H2v2h12v-2zm0-4H2v2h12V6zm4 8v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 16h8v-2H2v2z"/></svg>
-      </div><div class="songname"><h1><div class="overflowing">Shape of You</div></h1><div class="artistname"><h2>Ed Sheeran</h2></div></td></tr></table></div>
+      </div><div class="songname"><h1><div class="overflowing">Shape of You</div></h1><div class="artistname"><h2>Ed Sheeran</h2></div></td></tr></div></div></table>
   </td>
 
   <td width="20%">
@@ -1066,7 +1320,7 @@ function isvalidcolor(){
     </div>
     <div class="playlistit">
     <svg class="playlist cardbtn" height="36" viewBox="0 0 24 24" width="36"><path d="M0 0h24v24H0z" fill="none"/><path d="M14 10H2v2h12v-2zm0-4H2v2h12V6zm4 8v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 16h8v-2H2v2z"/></svg>
-    </div><div class="songname"><h1><div class="overflowing">How Far I'll Go</div></h1><div class="artistname"><h2>Moana Soundtrack</h2></div></td></tr></table></div>
+    </div><div class="songname"><h1><div class="overflowing">How Far I'll Go</div></h1><div class="artistname"><h2>Moana Soundtrack</h2></div></td></tr></div></div></table>
 </td>
 
 
@@ -1083,7 +1337,7 @@ function isvalidcolor(){
     </div>
     <div class="playlistit">
     <svg class="playlist cardbtn" height="36" viewBox="0 0 24 24" width="36"><path d="M0 0h24v24H0z" fill="none"/><path d="M14 10H2v2h12v-2zm0-4H2v2h12V6zm4 8v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 16h8v-2H2v2z"/></svg>
-    </div><div class="songname"><h1><div class="overflowing">Pull Yourgself Together</div></h1><div class="artistname"><h2>The Boxer Rebellion</h2></div></td></tr></table></div>
+    </div><div class="songname"><h1><div class="overflowing">Pull Yourgself Together</div></h1><div class="artistname"><h2>The Boxer Rebellion</h2></div></td></tr></div></div></table>
   </td></tr>
 
       <tr><td>
@@ -1099,7 +1353,7 @@ function isvalidcolor(){
           </div>
           <div class="playlistit">
           <svg class="playlist cardbtn" height="36" viewBox="0 0 24 24" width="36"><path d="M0 0h24v24H0z" fill="none"/><path d="M14 10H2v2h12v-2zm0-4H2v2h12V6zm4 8v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 16h8v-2H2v2z"/></svg>
-        </div><div class="songname"><h1><div class="overflowing">You Can't Always Get What You Want</div></h1><div class="artistname"><h2>The Rolling Stones</h2></div></td></tr></table></div>
+        </div><div class="songname"><h1><div class="overflowing">You Can't Always Get What You Want</div></h1><div class="artistname"><h2>The Rolling Stones</h2></div></td></tr></div></div></table>
         </td>
 
         <td>
@@ -1115,7 +1369,7 @@ function isvalidcolor(){
           </div>
           <div class="playlistit">
           <svg class="playlist cardbtn" height="36" viewBox="0 0 24 24" width="36"><path d="M0 0h24v24H0z" fill="none"/><path d="M14 10H2v2h12v-2zm0-4H2v2h12V6zm4 8v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 16h8v-2H2v2z"/></svg>
-          </div><div class="songname"><h1><div class="overflowing">24K Magic</div></h1><div class="artistname"><h2>Bruno Mars</h2></div></td></tr></table></div>
+          </div><div class="songname"><h1><div class="overflowing">24K Magic</div></h1><div class="artistname"><h2>Bruno Mars</h2></div></td></tr></div></div></table>
         </td>
 
         <td>
@@ -1131,7 +1385,7 @@ function isvalidcolor(){
           </div>
           <div class="playlistit">
           <svg class="playlist cardbtn" height="36" viewBox="0 0 24 24" width="36"><path d="M0 0h24v24H0z" fill="none"/><path d="M14 10H2v2h12v-2zm0-4H2v2h12V6zm4 8v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 16h8v-2H2v2z"/></svg>
-          </div><div class="songname"><h1><div class="overflowing">Daft Punk</div></h1><div class="artistname"><h2>Pentatonix Mars</h2></div></td></tr></table></div>
+          </div><div class="songname"><h1><div class="overflowing">Daft Punk</div></h1><div class="artistname"><h2>Pentatonix Mars</h2></div></td></tr></div></div></table>
         </td>
 
         <td>
@@ -1147,7 +1401,7 @@ function isvalidcolor(){
           </div>
           <div class="playlistit">
           <svg class="playlist cardbtn" height="36" viewBox="0 0 24 24" width="36"><path d="M0 0h24v24H0z" fill="none"/><path d="M14 10H2v2h12v-2zm0-4H2v2h12V6zm4 8v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 16h8v-2H2v2z"/></svg>
-          </div><div class="songname"><h1><div class="overflowing">One Last Time</div></h1><div class="artistname"><h2>Arianna Grande</h2></div></td></tr></table></div>
+          </div><div class="songname"><h1><div class="overflowing">One Last Time</div></h1><div class="artistname"><h2>Arianna Grande</h2></div></td></tr></div></div></table>
         </td>
 
         <td>
@@ -1163,13 +1417,11 @@ function isvalidcolor(){
           </div>
           <div class="playlistit">
           <svg class="playlist cardbtn" height="36" viewBox="0 0 24 24" width="36"><path d="M0 0h24v24H0z" fill="none"/><path d="M14 10H2v2h12v-2zm0-4H2v2h12V6zm4 8v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 16h8v-2H2v2z"/></svg>
-        </div><div class="songname"><h1><div class="overflowing">ממעמקים</div></h1><div class="artistname"><h2>עידן רייכל</h2></div></td></tr></table></div>
+        </div><div class="songname"><h1><div class="overflowing">ממעמקים</div></h1><div class="artistname"><h2>עידן רייכל</h2></div></td></tr></div></div></table>
         </td></tr>
 
 </table>
 
-</td></tr>
-  </table>
 
 </td></tr>
 <!-- END OF HOME -->
