@@ -9,19 +9,11 @@ The API and code must be as tidy and readable as possible.
 
 TASTKS:
 
-* Make a way that saved songs and playlists (and movies?) don't overflow and take more than screen width and height.
-
-* Trim/crop to a square non-square album images.
-
 * Sending forms to right DBs.
 
 * Getting metadata from audiofiles
 
-* Playlists.
-
 * Gesture+list in audiobar that there is a playlist. (num of songs playing can be achieved using textTracks.length
-
-* Personal starred songs.
 
 * smart search - by song name, singer, album or lyrics (if available).
 
