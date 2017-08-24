@@ -39,4 +39,6 @@ TASTKS:
 
 * Make html tags not affect chat.
 
+* Sortable music lists
+
 Thanks for reading and participating!
