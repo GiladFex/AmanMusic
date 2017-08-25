@@ -36,7 +36,6 @@
  }
 
 
-
  h1{
    font-family: 'Assistant';
    color: #000000 !important;
@@ -254,7 +253,7 @@ input[type="radio"]:checked + .icon {
   background: url(icons/search.svg) no-repeat scroll 135px 3px;
   padding-right:30px;
   border: 2px solid #000;
-  border-radius: 15px;
+  border-radius: 16px;
   outline: none;
   font-family:  'Assistant';
   transition-duration: 0.375s;
@@ -798,27 +797,7 @@ function resizing() {
       }
     }
 }
-var flag=false;
-function makebiggerandsmaller(searchfocus){
-  if (flag){ //if was clicked once already
-  document.getElementById('bodyofsongresults').style.height="45%";
-  document.getElementById('bodyofmovieresults').style.height="45%";
-  flag=false;
-  }
-  else{
-    if (searchfocus==1){
-      document.getElementById('bodyofsongresults').style.height="100%";
-      document.getElementById('bodyofsongresults').style.fontSize="small";
-      document.getElementById('bodyofmovieresults').style.height="0";
-      flag = true;
-    }
-    if (searchfocus==2){
-      document.getElementById('bodyofsongresults').style.height="0";
-      document.getElementById('bodyofmovieresults').style.height="100%";
-      flag = true;
-    }
-  }
-}
+
 
 
 var timeout;
@@ -852,7 +831,7 @@ function chatUpdate() {
   lastsent = new Date();
   }
   else{
-    document.getElementById('chat').innerHTML += "<font style='font-weight: bold;text-decoration: underline;color:red;text-align: center;'>נא לא להספים את הצ'אט.</font><br>"
+    document.getElementById('chat').innerHTML += "<div style='text-align: center;'><font style='font-weight: bold;color:#d43f3a;'>נא לא להספים את הצ'אט. :)</font></div>"
   }
 }
 
@@ -904,7 +883,7 @@ function isvalidcolor(){
 
       <table class="fulltable">
         <tr>
-          <td width="5%" align="middle">
+          <td width="80" align="middle">
               <div class="dropdown">
               <svg class="dropdown-toggle" data-toggle="dropdown" id="acctop" fill="#000000" height="36" viewBox="0 0 24 24" width="36">
                   <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
@@ -919,7 +898,7 @@ function isvalidcolor(){
               </ul>
             </div>
           </td>
-          <td width="10%" align="middle"><input size="16" onclick='show(4);' oninput="searching();" id="searchbar" type="text" dir="rtl" placeholder="מחפש משהו?" name="search"></td>
+          <td width="80" align="middle"><input size="16" onclick='show(4);' oninput="searching();" id="searchbar" type="text" dir="rtl" placeholder="מחפש משהו?" name="search"></td>
           <td></td>
           <td width="10%" align="middle">
 
@@ -985,21 +964,22 @@ function isvalidcolor(){
 
 <!-- END OF 404 ERROR -->
 <!-- SEARCH -->
-<td style="display: none;animation: fadeIn 1s;" valign="top" dir="rtl" id="searchy" bgcolor="white">
-  <table align="center" style="user-select: none;width: 100%;height:100%" border="0">
-<tr style="cursor: pointer;" id="headofsongresults" onclick="makebiggerandsmaller(1);" height="56" bgcolor="#efefef"><td colspan="3" align="center"><svg data-toggle="tooltip" data-placement="bottom" title="מוזיקה" fill="#393939" height="48" viewBox="0 0 24 24" width="48"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 3v9.28c-.47-.17-.97-.28-1.5-.28C8.01 12 6 14.01 6 16.5S8.01 21 10.5 21c2.31 0 4.2-1.75 4.45-4H15V6h4V3h-7z"/></svg></td></tr>
-<tr id="bodyofsongresults">
-  <td width="1" align="center"><svg style="cursor: auto;" fill="#b7b7b7" height="48" viewBox="0 0 24 24" width="48"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/><path d="M0 0h24v24H0z" fill="none"/></svg></td>
-  <td align="center"><r class="textofsearch"></r></td>
-  <td width="1" align="center"><svg style="cursor: auto;" fill="#b7b7b7" height="48" viewBox="0 0 24 24" width="48"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg></td></tr>
-<tr style="cursor: pointer;" id="headofmovieresults" onclick="makebiggerandsmaller(2);" height="56" bgcolor="#efefef"><td colspan="3" align="center"><svg data-toggle="tooltip" data-placement="bottom" title="סרטים" fill="#393939" height="48" viewBox="0 0 24 24" width="48"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/><path d="M0 0h24v24H0z" fill="none"/></svg><td></tr>
-  <tr><td colspan="3">
-  </td></tr>
-<tr id="bodyofmovieresults">
-  <td width="1" align="center"><svg style="cursor: auto;" fill="#b7b7b7" height="48" viewBox="0 0 24 24" width="48"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/><path d="M0 0h24v24H0z" fill="none"/></svg></td>
-  <td align="center"><r class="textofsearch"></r></td>
-  <td width="1" align="center"><svg style="cursor: auto;" fill="#b7b7b7" height="48" viewBox="0 0 24 24" width="48"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg></td></tr>
-  </table>
+<td style="display: none;animation: fadeIn 1s;" valign="top" align="center" dir="rtl" id="searchy" bgcolor="white">
+  <div style="direction:rtl;overflow-y:scroll;overflow-wrap:break-word;width:100%;height:100%;">
+    <table width="95%" height="36">
+      <tr><td width="100%" style="text-align: center;font-size:20px;background: linear-gradient(to right,  #fff 0%,#444444 50%,#fff 100%);color: white;">חיפוש&nbsp;
+
+
+        <svg class="pull-right" style="margin-top: 3px;margin-right: 10px;" fill="#000000" height="24" viewBox="0 0 24 24" width="24"><path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+      </td></tr>
+    </table>
+      <table align="center" style="user-select: none;width: 100%;height:calc(100% - 36px);" border="0">
+    <tr id="bodyofsongresults">
+      <td width="1" align="center"><svg style="cursor: auto;" fill="#b7b7b7" height="48" viewBox="0 0 24 24" width="48"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/><path d="M0 0h24v24H0z" fill="none"/></svg></td>
+      <td align="center"><r class="textofsearch"></r></td>
+      <td width="1" align="center"><svg style="cursor: auto;" fill="#b7b7b7" height="48" viewBox="0 0 24 24" width="48"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/><path d="M0 0h24v24H0z" fill="none"/></svg></td></tr>
+      </table>
+    </div>
 
 </td>
 <!-- END OF SEARCH -->
@@ -1107,7 +1087,7 @@ function isvalidcolor(){
   <tr><td height="100" width="50%" align="left" style="font-family: Assistant;font-weight: bold;font-size: 72px;vertical-align:bottom;">
   <c id="moviename"></c></td><td align="right" style="font-family: Assistant;font-weight: bold;font-size: 24px;color: grey;vertical-align:bottom;padding-bottom: 14px;">ז'אנר</td></tr>
   <tr><td colspan="2" align="center">
-    <video id="videoplayer" onerror="show(404);" width="900" controls><source src="movies/1.mp4" type="video/mp4"></video><br>
+    <video id="videoplayer" onerror="show(404);" width="900" controls controlsList="nodownload"><source src="movies/1.mp4" type="video/mp4"></video><br>
   </td></tr>
   </table>
 </td>
@@ -1446,7 +1426,7 @@ function isvalidcolor(){
 <!-- AUDIOPLAYER -->
 <tr id="theaudiobar"><td colspan="2" height="50" style="background: #f5f5f5;animation: fadeIn 1s;">
   <table border="0" class="fulltable"><tr>
-    <td><audio id="audio" style="width: 100%;" controls><source id="audioSource" src="" type="audio/mpeg"></audio></td>
+    <td><audio id="audio" style="width: 100%;" controls controlsList="nodownload"><source id="audioSource" src="" type="audio/mpeg"></audio></td>
       <td width="50" align="center">
         <div class="dropup botbuttonsgrey">
               <svg id="playlistbot" class="dropdown-toggle botbuttonsgrey" data-toggle="dropdown" enable-background="new 0 0 24 24" height="24"viewBox="0 0 24 24" width="24" x="0px" y="0px"><g id="XMLID_1_"><path d="M0,0h24v24H0V0z" fill="none"/><g id="XMLID_2_"><rect height="2" id="XMLID_3_" width="12" x="4" y="10"/><rect height="2" id="XMLID_4_" width="12" x="4" y="6"/><rect height="2" id="XMLID_5_" width="8" x="4" y="14"/><polygon id="XMLID_6_" points="14,14 14,20 19,17   "/></g></g></svg>
