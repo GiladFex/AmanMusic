@@ -249,13 +249,11 @@ transition-duration: 0.375s;
 color: #000000;
 }
 #searchbar:hover{
-background: url(icons/searchhover.svg) no-repeat scroll 135px 3px !important;
 border: 2px solid #00601b !important;
 transition-duration: 0.375s;
 color: #00601b !important;
 }
 #searchbar:focus{
-  background: url(icons/searchfocus.svg) no-repeat scroll 135px 3px;
  border: 2px solid #00962a;
 transition-duration: 0.375s;
 color: #00962a;
