@@ -1,0 +1,470 @@
+a, a:link, a:visited,  a:hover, a:active{
+  text-decoration: none !important;
+  color: inherit !important;
+      transition-duration: 0.15s;
+      cursor: pointer;
+}
+body {
+font-family:  'Assistant';
+margin:0;
+}
+audio::-webkit-media-controls-panel{
+background:rgba(255,255,255,0);
+}
+audio::-webkit-media-controls-play-button{
+cursor: pointer;
+}
+audio::-webkit-media-controls-timeline::selection{
+background-color: red;
+}
+.volume .bar.active {
+ border-right-color: #ff0000 !important;
+}
+.volume .bar {
+ border-right-color: #ff0000 !important;
+}
+
+
+h1{
+ font-family: 'Assistant';
+ color: #000000 !important;
+ font-size: 1.2em !important;
+ margin-top:1px !important;
+ margin-bottom:1px !important;
+ direction: rtl !important;
+ font-weight: 600;
+}
+h2{
+ font-family: 'Assistant' !important;
+ color: #7c7c7c !important;
+ font-size: 1em !important;
+ margin-top:0px !important;
+ margin-bottom:3px !important;
+ direction: rtl !important;
+}
+
+.albumart {
+transition-duration: 0.45s;
+position: relative;
+}
+.albumart:hover .album{
+transition-duration: 0.25s;
+filter: brightness(50%);
+}
+.albumart .playit {
+ position: absolute;
+ left: 55;
+ top: 55;
+ display: none;
+}
+.albumart .loveit {
+ position: absolute;
+ left: 16;
+ top: 98;
+ display: none;
+}
+.albumart:hover .loveit  {
+ display: block;
+}
+.albumart .playlistit {
+ position: absolute;
+ left: 180;
+ top: 100;
+ display: none;
+}
+.albumart:hover .playlistit  {
+ display: block;
+
+}
+.album{
+ transition-duration: 0.2s;
+}
+.albumart:hover .playit  {
+ display: block;
+}
+
+/* for movies */
+.movalbumart {
+transition-duration: 0.45s;
+position: relative;
+}
+.movalbumart:hover .movalbum{
+transition-duration: 0.25s;
+filter: brightness(50%);
+}
+.movalbum{
+ transition-duration: 0.2s;
+}
+.movalbumart .movplayit {
+ position: absolute;
+ left: 55;
+ top: 102;
+ display: none;
+}
+.movalbumart:hover .movplayit  {
+ display: block;
+}
+.movcard{
+ box-shadow: 0px 0px 3px #999;
+ border-radius: 4px;
+ background: #fff;
+ width: 230px;
+}
+
+.movcardphoto{
+object-fit: cover;
+  width:230px;
+  height:325px;
+}
+
+.movcardbtn{
+ fill: rgba(255,255,255,0.6);
+ transition-duration: 0.375s;
+ cursor:pointer;
+
+}
+
+.movcardbtn:hover{
+ fill: rgba(255,255,255,1);
+ transition-duration: 0.375s;
+}
+.movoverflowing {
+ width: 230px;
+ overflow:hidden;
+ text-overflow:ellipsis;
+ white-space:nowrap;
+ display:inline-block;
+}
+.movcardphoto{
+ border-top-right-radius:4px;
+ border-top-left-radius:4px;
+}
+
+/* end of for movie */
+
+.card{
+box-shadow: 0px 0px 3px #999;
+border-radius: 4px;
+background: #fff;
+width: 230px;
+}
+
+.cardphoto{
+border-top-right-radius:4px;
+border-top-left-radius:4px;
+object-fit: cover;
+width:230px;
+height:230px;
+}
+
+
+.cardbtn{
+fill: rgba(255,255,255,0.6);
+transition-duration: 0.375s;
+cursor:pointer;
+
+}
+
+.cardbtn:hover{
+fill: rgba(255,255,255,1);
+transition-duration: 0.375s;
+}
+
+.overflowing {
+width: 230px;
+overflow:hidden;
+text-overflow:ellipsis;
+white-space:nowrap;
+display:inline-block;
+}
+
+.fulltable{
+border-collapse:collapse;
+padding: 0;
+margin: 0;
+height:100%;
+width:100%;
+}
+
+::-webkit-scrollbar{
+  height:10px;
+  width:10px;
+  border-radius: 4px;
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar:hover{
+  background: #c6c7ca;
+}
+
+::-webkit-scrollbar-thumb{
+  background:#777779;
+  border-radius: 4px;
+}
+
+.dropdown {
+display: inline-block;
+user-select: none;
+}
+
+#hometop, #playlisttop, #startop, #movietop, #acctop{
+cursor:pointer;
+  transition-duration: 0.375s;
+
+}
+#hometop:hover, #playlisttop:hover, #startop:hover, #movietop:hover, #acctop:hover{
+fill: #00601b !important;
+transition-duration: 0.375s;
+}
+
+.botbuttonsgrey{
+fill: #f5f5f5;
+}
+.botbutton{
+fill: #5a5a5a;
+cursor: pointer;
+transition-duration: 0.375s;
+}
+.botbutton:hover{
+fill: #000;
+transition-duration: 0.375s;
+}
+
+svg {
+  cursor: pointer;
+}
+input[type="radio"]:checked + .icon {
+  fill: #000000;
+  transition-duration: 0.35s;
+}
+#searchbar{
+background: url(icons/search.svg) no-repeat scroll 135px 3px;
+padding-right:30px;
+border: 2px solid #000;
+border-radius: 16px;
+outline: none;
+font-family:  'Assistant';
+transition-duration: 0.375s;
+color: #000000;
+}
+#searchbar:hover{
+background: url(icons/searchhover.svg) no-repeat scroll 135px 3px !important;
+border: 2px solid #00601b !important;
+transition-duration: 0.375s;
+color: #00601b !important;
+}
+#searchbar:focus{
+  background: url(icons/searchfocus.svg) no-repeat scroll 135px 3px;
+ border: 2px solid #00962a;
+transition-duration: 0.375s;
+color: #00962a;
+}
+.textofsearch{
+font-family:  'Assistant';
+font-size: 72px;
+display: inline;
+margin-right: 40px;
+font-weight: 600;
+
+}
+.keyshortcut{
+border: 2px solid #cacaca;
+border-radius: 5px;
+width: 30px;
+height: 30px;
+line-height: 25px;
+text-align: center;
+font-family:  'Assistant';
+text-indent: 0px;
+white-space: nowrap;
+display: inline-block;
+}
+.keyspace{
+line-height: 50px;
+}
+
+.input-color-container {
+  position: relative;
+  overflow: hidden;
+  width: 20px;
+  height: 20px;
+  border: solid 2px #ddd;
+  border-radius: 40px;
+    white-space: nowrap;
+}
+
+.input-color {
+  position: absolute;
+  right: -8px;
+  top: -8px;
+  width: 56px;
+  height: 56px;
+  border: none;
+  cursor: pointer;
+}
+#bodyofsongresults{
+      height: 45%;
+      transition: height 0.3s;
+}
+#bodyofmovieresults{
+          height: 45%;
+      transition: height 0.3s;
+}
+#videoplayer {
+ max-width: 1500px;
+ width:  calc(100% - 350px);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+    to { opacity: 1; }
+}
+.button {
+background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 100%);
+position: absolute;
+padding: 3px;
+display: inline-block;
+border-radius: 50px;
+box-shadow: 0px 2px 5px #ababab;
+top: 85px;
+left: 270px;
+z-index: 1000;
+}
+.dice {
+display: inline-block;
+background: #fff;
+border-radius: 50px;
+height: 48px;
+width: 48px;
+text-align: center;
+padding: 8px 0;
+fill: #636363;
+transition-duration: 0.25s;
+}
+.button:hover .dice{
+fill: #393939;
+transition-duration: 0.25s;
+}
+.button:hover{
+box-shadow: 0px 4px 10px #808080;
+transition-duration: 0.25s;
+
+}
+.starredtable {
+border-collapse:collapse;
+padding: 0px;
+margin: 0px;
+height:auto;
+width:95%;
+text-align: center;
+height: auto;
+background: linear-gradient(to right,  #ffffff 0%,#f1f1f1 50%,#ffffff 100%);
+}
+.starredtable tr {
+height: 110px;
+ background: linear-gradient(0deg,  transparent 1px, white 1px, white calc(100% - 1px), transparent 1px);
+}
+.starredtable tr:hover {
+background: linear-gradient(to right,  #ffffff 0%,#f1f1f1 50%,#ffffff 100%);
+}
+.starredtablealbum{
+border-radius: 3px;
+object-fit: cover;
+width:90px;
+height:90px;
+}
+.stardescs{
+text-align: right;
+font-size: 24px;
+padding: 0px 10px 0px 0px;
+}
+
+/* playlist cards and buttons */
+.wrapper{
+height: 12em;
+width: 8em;
+position: relative;
+}
+
+.folderdiv{
+height: 8em;
+width: 8em;
+transition: all .4s ease;
+background: rgba(0, 0, 0, 0.2);
+border-radius: .8em;
+box-shadow: 0px 0px 3px #999;
+}
+
+.wrapper:hover .folderdiv{
+filter: brightness(30%);
+background: rgba(0, 0, 0, 0.7);
+  transition: all .4s ease;
+}
+
+.wrapper .playlistplayit {
+position: absolute;
+left: 30;
+top: 25;
+display: none;
+}
+.wrapper .playlistgoit {
+position: absolute;
+left: 5;
+top: 50;
+display: none;
+}
+
+.wrapper .playlistshuffleit {
+position: absolute;
+left: 100;
+top: 50;
+display: none;
+}
+.wrapper:hover .playlistplayit  {
+display: inline;
+z-index: 400;
+}
+.wrapper:hover .playlistshuffleit  {
+display: inline;
+z-index: 400;
+}
+
+.wrapper:hover .playlistgoit  {
+display: inline;
+z-index: 400;
+}
+
+.imginplaylist{
+object-fit: cover;
+width:30px;
+height:30px;
+border-radius:.4em;
+align-items: left;
+margin-top: 8px;
+margin-right: 8px;
+margin-left: 2px;
+float: right;
+}
+
+.nameofplaylist{
+margin-top: 1em;
+text-align: center;
+font-family:  'Assistant';
+font-weight: 700;
+font-size: 18px;
+}
+
+.playlistbtn{
+fill: rgba(255,255,255,0.6);
+transition-duration: 0.375s;
+cursor: pointer;
+
+}
+
+.playlistbtn:hover{
+fill: rgba(255,255,255,1);
+transition-duration: 0.375s;
+}
+
+/*end of playlist buttons*/
