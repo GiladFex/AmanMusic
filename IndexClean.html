@@ -1,0 +1,1194 @@
+<html>
+<head>
+<link rel="icon" type="image/png" href="pictures/favicon.png" sizes="16x16"/>
+
+<link href="https://fonts.googleapis.com/css?family=Assistant:400,600,700&amp;subset=hebrew" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<meta charset="utf-8"/>
+<title>אמן מוזיקה</title>
+  <style>
+  a, a:link, a:visited,  a:hover, a:active{
+    text-decoration: none !important;
+    color: inherit !important;
+        transition-duration: 0.15s;
+        cursor: pointer;
+  }
+  body {
+  font-family:  'Assistant';
+  margin:0;
+  }
+  audio::-webkit-media-controls-panel{
+  background:rgba(255,255,255,0);
+  }
+  audio::-webkit-media-controls-play-button{
+  cursor: pointer;
+  }
+  audio::-webkit-media-controls-timeline::selection{
+  background-color: red;
+  }
+  .volume .bar.active {
+   border-right-color: #ff0000 !important;
+ }
+ .volume .bar {
+   border-right-color: #ff0000 !important;
+ }
+
+
+ h1{
+   font-family: 'Assistant';
+   color: #000000 !important;
+   font-size: 1.2em !important;
+   margin-top:1px !important;
+   margin-bottom:1px !important;
+   direction: rtl !important;
+   font-weight: 600;
+ }
+ h2{
+   font-family: 'Assistant' !important;
+   color: #7c7c7c !important;
+   font-size: 1em !important;
+   margin-top:0px !important;
+   margin-bottom:3px !important;
+   direction: rtl !important;
+ }
+
+.albumart {
+  transition-duration: 0.45s;
+  position: relative;
+ }
+ .albumart:hover .album{
+  transition-duration: 0.25s;
+  filter: brightness(50%);
+ }
+ .albumart .playit {
+   position: absolute;
+   left: 55;
+   top: 55;
+   display: none;
+ }
+ .albumart .loveit {
+   position: absolute;
+   left: 16;
+   top: 98;
+   display: none;
+ }
+ .albumart:hover .loveit  {
+   display: block;
+ }
+ .albumart .playlistit {
+   position: absolute;
+   left: 180;
+   top: 100;
+   display: none;
+ }
+ .albumart:hover .playlistit  {
+   display: block;
+
+ }
+ .album{
+   transition-duration: 0.2s;
+ }
+ .albumart:hover .playit  {
+   display: block;
+ }
+
+/* for movies */
+.movalbumart {
+  transition-duration: 0.45s;
+  position: relative;
+ }
+ .movalbumart:hover .movalbum{
+  transition-duration: 0.25s;
+  filter: brightness(50%);
+ }
+ .movalbum{
+   transition-duration: 0.2s;
+ }
+ .movalbumart .movplayit {
+   position: absolute;
+   left: 55;
+   top: 102;
+   display: none;
+ }
+ .movalbumart:hover .movplayit  {
+   display: block;
+ }
+ .movcard{
+   box-shadow: 0px 0px 3px #999;
+   border-radius: 4px;
+   background: #fff;
+   width: 230px;
+ }
+
+.movcardphoto{
+  object-fit: cover;
+    width:230px;
+    height:325px;
+}
+
+ .movcardbtn{
+   fill: rgba(255,255,255,0.6);
+   transition-duration: 0.375s;
+   cursor:pointer;
+
+ }
+
+ .movcardbtn:hover{
+   fill: rgba(255,255,255,1);
+   transition-duration: 0.375s;
+ }
+ .movoverflowing {
+   width: 230px;
+   overflow:hidden;
+   text-overflow:ellipsis;
+   white-space:nowrap;
+   display:inline-block;
+ }
+ .movcardphoto{
+   border-top-right-radius:4px;
+   border-top-left-radius:4px;
+ }
+
+/* end of for movie */
+
+.card{
+  box-shadow: 0px 0px 3px #999;
+  border-radius: 4px;
+  background: #fff;
+  width: 230px;
+}
+
+.cardphoto{
+  border-top-right-radius:4px;
+  border-top-left-radius:4px;
+  object-fit: cover;
+  width:230px;
+  height:230px;
+}
+
+
+.cardbtn{
+  fill: rgba(255,255,255,0.6);
+  transition-duration: 0.375s;
+  cursor:pointer;
+
+}
+
+.cardbtn:hover{
+  fill: rgba(255,255,255,1);
+  transition-duration: 0.375s;
+}
+
+.overflowing {
+  width: 230px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  display:inline-block;
+}
+
+.fulltable{
+  border-collapse:collapse;
+  padding: 0;
+  margin: 0;
+  height:100%;
+  width:100%;
+}
+
+::-webkit-scrollbar{
+    height:10px;
+    width:10px;
+    border-radius: 4px;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar:hover{
+    background: #c6c7ca;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#777779;
+    border-radius: 4px;
+}
+
+.dropdown {
+  display: inline-block;
+  user-select: none;
+}
+
+#hometop, #playlisttop, #startop, #movietop, #acctop{
+  cursor:pointer;
+    transition-duration: 0.375s;
+
+}
+#hometop:hover, #playlisttop:hover, #startop:hover, #movietop:hover, #acctop:hover{
+  fill: #00601b !important;
+  transition-duration: 0.375s;
+}
+
+.botbuttonsgrey{
+  fill: #f5f5f5;
+}
+.botbutton{
+  fill: #5a5a5a;
+  cursor: pointer;
+  transition-duration: 0.375s;
+}
+.botbutton:hover{
+  fill: #000;
+  transition-duration: 0.375s;
+}
+
+svg {
+    cursor: pointer;
+}
+input[type="radio"]:checked + .icon {
+    fill: #000000;
+    transition-duration: 0.35s;
+}
+#searchbar{
+  background: url(icons/search.svg) no-repeat scroll 135px 3px;
+  padding-right:30px;
+  border: 2px solid #000;
+  border-radius: 16px;
+  outline: none;
+  font-family:  'Assistant';
+  transition-duration: 0.375s;
+  color: #000000;
+}
+#searchbar:hover{
+  background: url(icons/searchhover.svg) no-repeat scroll 135px 3px !important;
+  border: 2px solid #00601b !important;
+  transition-duration: 0.375s;
+  color: #00601b !important;
+}
+#searchbar:focus{
+    background: url(icons/searchfocus.svg) no-repeat scroll 135px 3px;
+   border: 2px solid #00962a;
+  transition-duration: 0.375s;
+  color: #00962a;
+}
+.textofsearch{
+font-family:  'Assistant';
+font-size: 72px;
+display: inline;
+margin-right: 40px;
+font-weight: 600;
+
+}
+.keyshortcut{
+  border: 2px solid #cacaca;
+  border-radius: 5px;
+  width: 30px;
+  height: 30px;
+  line-height: 25px;
+  text-align: center;
+  font-family:  'Assistant';
+  text-indent: 0px;
+  white-space: nowrap;
+  display: inline-block;
+}
+.keyspace{
+  line-height: 50px;
+}
+
+  .input-color-container {
+    position: relative;
+    overflow: hidden;
+    width: 20px;
+    height: 20px;
+    border: solid 2px #ddd;
+    border-radius: 40px;
+      white-space: nowrap;
+  }
+
+  .input-color {
+    position: absolute;
+    right: -8px;
+    top: -8px;
+    width: 56px;
+    height: 56px;
+    border: none;
+    cursor: pointer;
+  }
+  #bodyofsongresults{
+        height: 45%;
+        transition: height 0.3s;
+  }
+  #bodyofmovieresults{
+            height: 45%;
+        transition: height 0.3s;
+  }
+  #videoplayer {
+   max-width: 1500px;
+   width:  calc(100% - 350px);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+      to { opacity: 1; }
+}
+.button {
+  background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 100%);
+  position: absolute;
+  padding: 3px;
+  display: inline-block;
+  border-radius: 50px;
+  box-shadow: 0px 2px 5px #ababab;
+  top: 85px;
+  left: 270px;
+  z-index: 1000;
+}
+.dice {
+  display: inline-block;
+  background: #fff;
+  border-radius: 50px;
+  height: 48px;
+  width: 48px;
+  text-align: center;
+  padding: 8px 0;
+  fill: #636363;
+  transition-duration: 0.25s;
+}
+.button:hover .dice{
+  fill: #393939;
+  transition-duration: 0.25s;
+}
+.button:hover{
+  box-shadow: 0px 4px 10px #808080;
+  transition-duration: 0.25s;
+
+}
+.starredtable {
+  border-collapse:collapse;
+  padding: 0px;
+  margin: 0px;
+  height:auto;
+  width:95%;
+  text-align: center;
+  height: auto;
+  background: linear-gradient(to right,  #ffffff 0%,#f1f1f1 50%,#ffffff 100%);
+}
+.starredtable tr {
+  height: 110px;
+   background: linear-gradient(0deg,  transparent 1px, white 1px, white calc(100% - 1px), transparent 1px);
+}
+.starredtable tr:hover {
+  background: linear-gradient(to right,  #ffffff 0%,#f1f1f1 50%,#ffffff 100%);
+}
+.starredtablealbum{
+  border-radius: 3px;
+  object-fit: cover;
+  width:90px;
+  height:90px;
+}
+.stardescs{
+  text-align: right;
+  font-size: 24px;
+  padding: 0px 10px 0px 0px;
+}
+
+/* playlist cards and buttons */
+.wrapper{
+  height: 12em;
+  width: 8em;
+  position: relative;
+}
+
+.folderdiv{
+  height: 8em;
+  width: 8em;
+  transition: all .4s ease;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: .8em;
+ box-shadow: 0px 0px 3px #999;
+}
+
+.wrapper:hover .folderdiv{
+  filter: brightness(30%);
+  background: rgba(0, 0, 0, 0.7);
+    transition: all .4s ease;
+}
+
+.wrapper .playlistplayit {
+  position: absolute;
+  left: 30;
+  top: 25;
+  display: none;
+}
+.wrapper .playlistgoit {
+  position: absolute;
+  left: 5;
+  top: 50;
+  display: none;
+}
+
+.wrapper .playlistshuffleit {
+  position: absolute;
+  left: 100;
+  top: 50;
+  display: none;
+}
+.wrapper:hover .playlistplayit  {
+  display: inline;
+  z-index: 400;
+}
+.wrapper:hover .playlistshuffleit  {
+  display: inline;
+  z-index: 400;
+}
+
+.wrapper:hover .playlistgoit  {
+  display: inline;
+  z-index: 400;
+}
+
+.imginplaylist{
+object-fit: cover;
+width:30px;
+height:30px;
+border-radius:.4em;
+align-items: left;
+margin-top: 8px;
+margin-right: 8px;
+margin-left: 2px;
+float: right;
+}
+
+.nameofplaylist{
+margin-top: 1em;
+text-align: center;
+font-family:  'Assistant';
+font-weight: 800;
+font-size: 18px;
+}
+
+.playlistbtn{
+  fill: rgba(255,255,255,0.6);
+  transition-duration: 0.375s;
+  cursor: pointer;
+
+}
+
+.playlistbtn:hover{
+  fill: rgba(255,255,255,1);
+  transition-duration: 0.375s;
+}
+
+/*end of playlist buttons*/
+  </style>
+  <script>
+
+  function onloading(){
+    var flag=false; //in case it's a 404.
+    if ((location.hash=="#Home")||(location.hash=="")||(location.hash==null)){
+      show(0);
+      flag = true;
+    }
+    if (location.hash=="#Playlist"){
+      show(1);
+      flag = true;
+    }
+    if (location.hash=="#Starred"){
+      show(2);
+      flag = true;
+    }
+    if (location.hash=="#Movie"){
+      show(3);
+      flag = true;
+    }
+    if (location.hash.slice(0, 7)=="#MovieP"){
+      var playme = document.getElementById('audio');
+      playme.pause();
+      document.getElementById("theaudiobar").style.display="none";
+      document.getElementById("homey").style.display="none";
+      document.getElementById("playlisty").style.display="none";
+      document.getElementById("starry").style.display="none";
+      document.getElementById("moviey").style.display="table-cell";
+      document.getElementById("movieplaying").style.display="none";
+      document.getElementById("searchy").style.display="none";
+      document.getElementById('hometop').style.fill='#000';
+      document.getElementById('playlisttop').style.fill='#000';
+      document.getElementById('startop').style.fill='#000';
+      document.getElementById('movietop').style.fill='#00962a';
+      document.getElementById('searchbar').style.borderColor ='#000';
+      document.getElementById('searchbar').style.backgroundImage = "url('icons/search.svg')";
+      document.getElementById('searchbar').style.color ='#000';
+      playingmovie(location.hash.slice(8, location.hash.length));
+      flag = true;
+    }
+    if (location.hash=="#Search"){
+      show(4);
+      flag = true;
+    }
+    if ((location.hash=="#404")||(!flag)){
+        show(404);
+      }
+
+    }
+
+    function playingmovie(movieid){
+        location.hash = 'MovieP&'+movieid;
+        document.getElementById("moviey").style.display="none";
+        document.getElementById("movieplaying").style.display="table-cell";
+        document.getElementById('moviename').innerHTML = (movieid.slice(0, -4).slice(7,));
+        document.getElementById('videoplayer').setAttribute("src", movieid);
+        document.getElementById('videoplayer').load();
+    }
+
+
+  function updateSource(name){
+    var playme = document.getElementById('audio');
+    document.getElementById("starbot").classList.add("botbutton");
+    document.getElementById("playlistbot").classList.add("botbutton");
+    if (name=="rand"){
+      //it should randomize between every single song.. currently there are two - 1.mp3 and 2.mp3 so it randomizes between them.
+      var x = Math.floor((Math.random() * 2) + 1)
+        playme.src = "songs/"+x+".mp3";
+        document.title = x;
+        document.getElementById("recentactivity").innerHTML+= "גילעד פדר מנגן <b>"+x+"</b><br>";
+    }
+    else{
+        playme.src='songs/'+name+'.mp3';
+        document.title = name;
+        document.getElementById("recentactivity").innerHTML+= "גילעד פדר מנגן <b>"+name+"</b><br>";
+    }
+    playme.play();
+    $('#recentactivity').scrollTop($('#recentactivity')[0].scrollHeight);
+  }
+
+  function star(TheID) {
+          document.getElementById('star1').src='icons/cardstarfill.svg';
+      }
+
+  function show(nr) {
+        if (nr==0){
+          location.hash = 'Home';
+          document.getElementById("error").style.display="none";
+          document.getElementById("theaudiobar").style.display="table-row";
+          document.getElementById("homey").style.display="table-cell";
+          document.getElementById("playlisty").style.display="none";
+          document.getElementById("starry").style.display="none";
+          document.getElementById("moviey").style.display="none";
+          document.getElementById("movieplaying").style.display="none";
+          document.getElementById("searchy").style.display="none";
+          document.getElementById('hometop').style.fill='#00962a';
+          document.getElementById('playlisttop').style.fill='#000';
+          document.getElementById('startop').style.fill='#000';
+          document.getElementById('movietop').style.fill='#000';
+          document.getElementById('searchbar').style.borderColor ='#000';
+          document.getElementById('searchbar').style.backgroundImage = "url('icons/search.svg')";
+          document.getElementById('searchbar').style.color ='#000';
+        }
+        if (nr==1){
+          location.hash = 'Playlist';
+          document.getElementById("error").style.display="none";
+          document.getElementById("theaudiobar").style.display="table-row";
+          document.getElementById("homey").style.display="none";
+          document.getElementById("playlisty").style.display="table-cell";
+          document.getElementById("starry").style.display="none";
+          document.getElementById("moviey").style.display="none";
+          document.getElementById("movieplaying").style.display="none";
+          document.getElementById("searchy").style.display="none";
+          document.getElementById('hometop').style.fill='#000';
+          document.getElementById('playlisttop').style.fill='#00962a';
+          document.getElementById('startop').style.fill='#000';
+          document.getElementById('movietop').style.fill='#000';
+          document.getElementById('searchbar').style.borderColor ='#000';
+          document.getElementById('searchbar').style.backgroundImage = "url('icons/search.svg')";
+          document.getElementById('searchbar').style.color ='#000';
+        }
+        if (nr==2){
+          location.hash = 'Starred';
+          document.getElementById("error").style.display="none";
+          document.getElementById("theaudiobar").style.display="table-row";
+          document.getElementById("homey").style.display="none";
+          document.getElementById("playlisty").style.display="none";
+          document.getElementById("starry").style.display="table-cell";
+          document.getElementById("moviey").style.display="none";
+          document.getElementById("movieplaying").style.display="none";
+          document.getElementById("searchy").style.display="none";
+          document.getElementById('hometop').style.fill='#000';
+          document.getElementById('playlisttop').style.fill='#000';
+          document.getElementById('startop').style.fill='#00962a';
+          document.getElementById('movietop').style.fill='#000';
+          document.getElementById('searchbar').style.borderColor ='#000';
+          document.getElementById('searchbar').style.backgroundImage = "url('icons/search.svg')";
+          document.getElementById('searchbar').style.color ='#000';
+        }
+      if (nr==3){
+        location.hash = 'Movie';
+        var playme = document.getElementById('audio');
+        playme.pause();
+        document.getElementById("error").style.display="none";
+        document.getElementById("theaudiobar").style.display="none";
+        document.getElementById("homey").style.display="none";
+        document.getElementById("playlisty").style.display="none";
+        document.getElementById("starry").style.display="none";
+        document.getElementById("moviey").style.display="table-cell";
+        document.getElementById("movieplaying").style.display="none";
+        document.getElementById("searchy").style.display="none";
+        document.getElementById('hometop').style.fill='#000';
+        document.getElementById('playlisttop').style.fill='#000';
+        document.getElementById('startop').style.fill='#000';
+        document.getElementById('movietop').style.fill='#00962a';
+        document.getElementById('searchbar').style.borderColor ='#000';
+        document.getElementById('searchbar').style.backgroundImage = "url('icons/search.svg')";
+        document.getElementById('searchbar').style.color ='#000';
+      }
+      if (nr==4){
+        location.hash = 'Search';
+        document.getElementById("error").style.display="none";
+        document.getElementById("theaudiobar").style.display="table-row";
+        document.getElementById("homey").style.display="none";
+        document.getElementById("playlisty").style.display="none";
+        document.getElementById("starry").style.display="none";
+        document.getElementById("searchy").style.display="table-cell";
+        document.getElementById("moviey").style.display="none";
+        document.getElementById("movieplaying").style.display="none";
+        document.getElementById('hometop').style.fill='#000';
+        document.getElementById('playlisttop').style.fill='#000';
+        document.getElementById('startop').style.fill='#000';
+        document.getElementById('movietop').style.fill='#000';
+        document.getElementById('searchbar').style.borderColor ='#00962a';
+        document.getElementById('searchbar').style.backgroundImage = "url('icons/searchfocus.svg')";
+        document.getElementById('searchbar').style.color ='#00962a';
+      }
+      if (nr==404){
+        location.hash = '404';
+        document.getElementById("error").style.display="table-cell";
+        document.getElementById("theaudiobar").style.display="table-row";
+        document.getElementById("homey").style.display="none";
+        document.getElementById("playlisty").style.display="none";
+        document.getElementById("starry").style.display="none";
+        document.getElementById("moviey").style.display="none";
+        document.getElementById("movieplaying").style.display="none";
+        document.getElementById("searchy").style.display="none";
+        document.getElementById('hometop').style.fill='#000';
+        document.getElementById('playlisttop').style.fill='#000';
+        document.getElementById('startop').style.fill='#000';
+        document.getElementById('movietop').style.fill='#000';
+        document.getElementById('searchbar').style.borderColor ='#000';
+        document.getElementById('searchbar').style.backgroundImage = "url('icons/search.svg')";
+        document.getElementById('searchbar').style.color ='#000';
+      }
+            document.getElementById('hometop').style.transition = "0.375s";
+            document.getElementById('playlisttop').style.transition = "0.375s";
+            document.getElementById('startop').style.transition = "0.375s";
+            document.getElementById('movietop').style.transition = "0.375s";
+            document.getElementById('acctop').style.transition = "0.375s";
+            document.getElementById('searchbar').style.transition = "0.375s";
+      }
+
+      console.log("MADE ALL BY HAND BY GILAD FEDER.");
+
+function searching(valofrad){
+  if ((document.getElementById("searchbar").value==null)||(document.getElementById("searchbar").value=="")||(document.getElementById("searchbar").value==" ")||(document.getElementById("searchbar").value=="הכל")||(document.getElementById("searchbar").value=="all")||(document.getElementById("searchbar").value=="All"))
+  {
+    //shows everything
+    document.getElementsByClassName("textofsearch")[0].innerHTML= "מציג הכל!";
+
+  }
+  else{
+    //shows specific
+  document.getElementsByClassName("textofsearch")[0].innerHTML = document.getElementById("searchbar").value;
+  }
+}
+
+
+function randchatcolor(){
+  var letters = '012345'.split('');
+  var color = '#';
+  color += letters[Math.round(Math.random() * 5)];
+  letters = '0123456789ABCDEF'.split('');
+  for (var i = 0; i < 5; i++) {
+    color += letters[Math.round(Math.random() * 15)];
+  }
+  document.getElementById("input-color").value = color;
+  savedcolor = color;
+}
+
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+
+function resizing() {
+    var w = window.outerWidth;
+    var h = window.outerHeight;
+
+    if ((w<=1430)||(h<=758)){ //if screen size is too small
+      for (var i=0; i<10 ; i++) //loops through all elements (10 in homescreen)
+      {
+        //widths and heights of elements
+        document.getElementsByClassName('cardphoto')[i].style.width = "115px";
+        document.getElementsByClassName('cardphoto')[i].style.height = "115px";
+        document.getElementsByClassName('card')[i].style.width = "115px";
+        document.getElementsByClassName('card')[i].style.height = "115px";
+        document.getElementsByClassName('overflowing')[i].style.width = "115px";
+        document.getElementsByClassName('movcardphoto')[i].style.width = "115px";
+        document.getElementsByClassName('movcardphoto')[i].style.height = "162px";
+        document.getElementsByClassName('movcard')[i].style.width = "115px";
+        document.getElementsByClassName('movoverflowing')[i].style.width = "115px";
+
+        //button icons sizes
+        document.getElementsByClassName('play')[i].style.width= "60px";
+        document.getElementsByClassName('playlist')[i].style.width= "24px";
+        document.getElementsByClassName('star')[i].style.width= "24px";
+        document.getElementsByClassName('movplay')[i].style.width= "60px";
+
+        //buttons icons location
+        document.getElementsByClassName('playit')[i].style.top= "-3px";
+        document.getElementsByClassName('playit')[i].style.left= "27px";
+        document.getElementsByClassName('loveit')[i].style.top= "40px";
+        document.getElementsByClassName('loveit')[i].style.left= "3px";
+        document.getElementsByClassName('playlistit')[i].style.top= "42px";
+        document.getElementsByClassName('playlistit')[i].style.left= "88px";
+        document.getElementsByClassName('movplayit')[i].style.top= "25px";
+        document.getElementsByClassName('movplayit')[i].style.left= "27px";
+
+        //font sizes
+        document.getElementsByClassName('songname')[i].style.fontSize= "0.6em";
+        document.getElementsByClassName('artistname')[i].style.fontSize= "0.5em";
+        document.getElementsByClassName('movname')[i].style.fontSize= "0.6em";
+        document.getElementsByClassName('movgenre')[i].style.fontSize= "0.5em";
+      }
+    }
+    else{ //if screen size is good OR if it was too small and reverted back to normal.
+      for (i=0; i<10 ; i++) //loops through all elements (10 in homescreen)
+      {
+        //widths and heights of elements
+        document.getElementsByClassName('cardphoto')[i].style.width = "230px";
+        document.getElementsByClassName('cardphoto')[i].style.height = "230px";
+        document.getElementsByClassName('card')[i].style.width = "230px";
+        document.getElementsByClassName('card')[i].style.height = "230px";
+        document.getElementsByClassName('overflowing')[i].style.width = "230px";
+        document.getElementsByClassName('movcardphoto')[i].style.width = "230px";
+        document.getElementsByClassName('movcardphoto')[i].style.height = "325px";
+        document.getElementsByClassName('movcard')[i].style.width = "230px";
+        document.getElementsByClassName('movoverflowing')[i].style.width = "230px";
+
+        //button icons sizes
+        document.getElementsByClassName('play')[i].style.width= "120px";
+        document.getElementsByClassName('playlist')[i].style.width= "36px";
+        document.getElementsByClassName('star')[i].style.width= "36px";
+        document.getElementsByClassName('movplay')[i].style.width= "120px";
+
+        //buttons icons location
+        document.getElementsByClassName('playit')[i].style.top= "55px";
+        document.getElementsByClassName('playit')[i].style.left= "55px";
+        document.getElementsByClassName('loveit')[i].style.top= "98px";
+        document.getElementsByClassName('loveit')[i].style.left= "16px";
+        document.getElementsByClassName('playlistit')[i].style.top= "100px";
+        document.getElementsByClassName('playlistit')[i].style.left= "180px";
+        document.getElementsByClassName('movplayit')[i].style.top= "102px";
+        document.getElementsByClassName('movplayit')[i].style.left= "55px";
+
+        //font sizes
+        document.getElementsByClassName('songname')[i].style.fontSize= "inherit";
+        document.getElementsByClassName('artistname')[i].style.fontSize= "inherit";
+        document.getElementsByClassName('movname')[i].style.fontSize= "inherit";
+        document.getElementsByClassName('movgenre')[i].style.fontSize= "inherit";
+      }
+    }
+}
+
+
+
+var timeout;
+function coolgifs(){
+  clearTimeout(timeout);
+  document.getElementById('coolcircle').src = "pictures/load"+Math.floor((Math.random() * 17) + 1)+".gif";
+  document.getElementById('amancircle').style.display="none";
+  document.getElementById('coolcircle').style.display="inline";
+  timeout = setTimeout(function() {
+    document.getElementById('amancircle').style.display="inline";
+    document.getElementById('coolcircle').style.display="none";
+  }, 4000);
+
+}
+
+function loadingding() {
+    setTimeout(function(){
+      document.getElementById("loading").style.display="none";
+      document.getElementById("realone").style.display="table";
+    }, 1000+Math.floor(Math.random() * 2000));
+}
+
+var timing, lastsent = null, diff;
+function chatUpdate() {
+  timing = new Date();
+  diff = timing - lastsent;
+  if (diff>1000){ //not to spam more than 1 message per second.
+    document.getElementById('chat').innerHTML += "<font style='color:"+document.getElementById("input-color").value+";font-weight:bold;' >גילעד פדר:</font> "+document.getElementById('chatting').value+"<br>";
+    document.getElementById("chatting").value = null;
+    document.getElementById("chat").scrollTop = document.getElementById("chat").scrollHeight;
+  lastsent = new Date();
+  }
+  else{
+    document.getElementById('chat').innerHTML += "<div style='text-align: center;'><font style='font-weight: bold;color:#d43f3a;'>נא לא להספים את הצ'אט. :)</font></div>"
+  }
+}
+
+var savedcolor;
+function isvalidcolor(){
+  var r,g,b,lum;
+  var hex = document.getElementById("input-color").value.toString(16);
+  hex = hex.replace('#','');
+  r = parseInt(hex.substring(0,2), 16);
+  g = parseInt(hex.substring(2,4), 16);
+  b = parseInt(hex.substring(4,6), 16);
+  lum = (r+r+b+g+g+g)/6;
+  if (lum>191){
+    $("#colorproblem").fadeIn("slow");
+     document.getElementById("input-color").value = savedcolor;
+    setTimeout(function(){ $("#colorproblem").fadeOut("slow"); }, 3000);
+  }
+  savedcolor = document.getElementById("input-color").value;
+  }
+
+  </script>
+</head>
+<body style="user-drag: none; user-select: none;-moz-user-select: none;-webkit-user-drag: none;-webkit-user-select: none;-ms-user-select: none;" onresize="resizing();" onload="loadingding();onloading();searching();randchatcolor();resizing();">
+
+
+<!-- DUMMY LOADING SO EVERYTHING IS PUT IN PLACE -->
+<table style="animation: fadeIn 1s; text-shadow: 2px 2px 0 white, 2px -2px 0 white, -2px 2px 0 white, -2px -2px 0 white;" id="loading" class="fulltable" background="pictures/loadingbg.jpg">
+<tr><td height="25%"></td></tr>
+  <tr>
+    <td height="1" align="center">
+      <font style="font-size: 120px;line-height: 20px;">
+  AMAN MUSIC</font><br>
+  <font style="font-size: 20px; word-spacing: 5px;line-height: 20px;">
+  פלטפורמת מוזיקה וסרטים</font><br><br>
+</td></tr>
+<tr><td height="1" align="center"><img src="pictures/load.gif" class="img-circle"></td></tr>
+<tr><td height="25%"></td></tr>
+</td>
+</tr>
+</table>
+<!-- END OF DUMMY LOADING -->
+<!-- START OF THE REAL WEBSITE -->
+<!-- The site is built from 3 <tr>s, header, body and audioplayer. -->
+<table style="display: none;animation: fadeIn 1s;" id="realone" class="fulltable">
+<!-- HEADER -->
+  <tr style="background: linear-gradient(-65deg, #43C6AC, #F8FFAE);border-bottom: 1px solid #ebebeb;">
+    <div id="colorproblem" style="z-index: 4000;position: absolute;direction: rtl;left: 10px;top: 10px;display:none;animation: fadeIn 1s;" class="alert alert-danger">מצטערים, הצבע בהיר מידי. בחר צבע ככה יותר.</div>
+    <td colspan="2" style="background:rgba(255,255,255,0.8);" height="70">
+
+      <table class="fulltable">
+        <tr>
+          <td width="80" align="middle">
+              <div class="dropdown">
+              <svg class="dropdown-toggle" data-toggle="dropdown" id="acctop" fill="#000000" height="36" viewBox="0 0 24 24" width="36">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+                  <path d="M0 0h24v24H0z" fill="none"/>
+              </svg>
+              <ul style="text-align: right;animation: fadeIn 0.325s;" class="dropdown-menu">
+                <li><a data-toggle="modal" data-target="#settings"><text style="margin-right: 7px;">הגדרות משתמש&nbsp;</text><img style="margin-right: -10px;vertical-align: text-top;" src="icons/settings.png"></a></li>
+                <li><a data-toggle="modal" data-target="#songreq"><text style="margin-right: 7px;">בקשת והעלאת שירים&nbsp;</text><img style="margin-right: -10px;vertical-align: text-top;" src="icons/upload.png"></a></li>
+                <li class="divider"></li>
+                <li><a data-toggle="modal" data-target="#feedback"><text style="margin-right: 7px;">פידבק והערות&nbsp;</text><img style="margin-right: -10px;vertical-align: text-top;" src="icons/feedback.png"></a></li>
+                <li><a data-toggle="modal" data-target="#about"><text style="margin-right: 7px;">אודות&nbsp;</text><img style="margin-right: -10px;vertical-align: text-top;" src="icons/about.png"></a></li>
+              </ul>
+            </div>
+          </td>
+          <td width="80" align="middle"><input size="16" onclick='show(4);' oninput="searching();" id="searchbar" type="text" dir="rtl" placeholder="מחפש משהו?" name="search"></td>
+          <td></td>
+          <td width="10%" align="middle">
+
+            <svg id="movietop" onclick='show(3);' fill="#000000" height="24" viewBox="0 0 24 24" width="24" data-toggle="tooltip" data-placement="bottom" title="סרטים">
+                <path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/>
+                <path d="M0 0h24v24H0z" fill="none"/>
+            </svg>
+          </td>
+          <td width="10%" align="middle">
+            <svg id="startop" onclick='show(2);' fill="#000000" height="24" viewBox="0 0 24 24" width="24" data-toggle="tooltip" data-placement="bottom" title="מסומן בכוכב">
+                <path d="M0 0h24v24H0z" fill="none"/>
+                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                <path d="M0 0h24v24H0z" fill="none"/>
+            </svg>
+          </td>
+          <td width="10%" align="middle">
+            <svg id="playlisttop" onclick='show(1);' enable-background="new 0 0 24 24" fill="#000000" height="24"  viewBox="0 0 24 24" width="24" x="0px" xml:space="preserve" y="0px" data-toggle="tooltip" data-placement="bottom" title="פלייליסטים">
+            <g>
+            	<path d="M0,0h24v24H0V0z" fill="none"/>
+            	<g>
+            		<rect height="2" width="12" x="4" y="10"/>
+            		<rect height="2" width="12" x="4" y="6"/>
+            		<rect height="2" width="8" x="4" y="14"/>
+            		<polygon points="14,14 14,20 19,17   "/>
+            	</g>
+            </g>
+            </svg>
+          </td>
+          <td width="10%" align="middle">
+            <svg id="hometop" onclick='show(0);' fill="#00962a" height="24" viewBox="0 0 24 24" width="24" data-toggle="tooltip" data-placement="bottom" title="בית">
+                <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                <path d="M0 0h24v24H0z" fill="none"/>
+            </svg>
+          </td>
+          <td width="77" align="left" valign="middle" style="padding-top: 5px;"><img style="cursor: pointer;" onclick="show(0);" src="pictures/logo3.png"></td>
+          <td width="80" align="left" valign="middle">
+            <div class="imageWrap">
+    <img id="amancircle" style="display:inline;animation: fadeIn 2s;" onclick="coolgifs();" class="img-circle" height="60" src="pictures/logo4.png">
+    <img id="coolcircle" style="display:none;animation: fadeIn 2s;" onclick="coolgifs();" class="img-circle" height="60" src="pictures/load4.gif" />
+</div>
+
+</td>
+        </tr>
+      </table>
+  </td></tr>
+<!-- END OF HEADER -->
+<!-- BODY -->
+  <tr style="background:rgba(255,255,255,1);animation: fadeIn 1s;"><td width="250" style="border-right: 1px solid #eceee7;">
+<!-- STALKING AND CHAT -->
+  <table style="font-family: 'Assistant';" class="fulltable">
+    <tr><td height="150" style="border-bottom: 1px solid #eceee7;"><div id="recentactivity" style="direction:rtl;overflow-y:scroll;overflow-wrap:break-word;width:250;height:100%;padding:10px;"></div></td></tr>
+    <tr><td><div id="chat" style="direction:rtl;overflow-y:scroll;overflow-wrap:break-word;width:250;height:100%;padding:10px;"></div></td></tr>
+    <tr><td height="1"><input onkeydown = "if (event.keyCode == 13) chatUpdate();" id="chatting" style="background: #f0f0f0;direction:rtl;outline: none;border: 1px solid #eceee7;width: 100%;" placeholder="הצטרפ/י לשיחה!" type="text"></td></tr>
+  </table></td>
+<!-- TACHLES -->
+<!-- 404 ERROR -->
+<td style="display: none;animation: fadeIn 1s;"  dir="rtl" id="error" bgcolor="white">
+  <table border="0" style="text-shadow:-1px -1px 0 #fff,1px -1px 0 #fff,-1px 1px 0 #fff,1px 1px 0 #fff;background-repeat: no-repeat;background-position: right bottom;background-size:auto 400px;" background="pictures/404.png" class="fulltable">
+    <tr><td valign="bottom" align="center" style="font-size: 120px;" dir="ltr">Sorry...</td></tr>
+    <tr><td height="50%" valign="top" align="center" style="font-size: 30px;" height="1">לא נמצא העמוד המתאים.</td></tr>
+</table>
+</td>
+
+<!-- END OF 404 ERROR -->
+<!-- SEARCH -->
+<td style="display: none;animation: fadeIn 1s;" valign="top" align="center" dir="rtl" id="searchy" bgcolor="white">
+  <div style="direction:rtl;overflow-y:scroll;overflow-wrap:break-word;width:100%;height:100%;">
+    <table width="95%" height="36">
+      <tr><td width="100%" style="text-align: center;font-size:20px;background: linear-gradient(to right,  #fff 0%,#444444 50%,#fff 100%);color: white;">חיפוש&nbsp;
+
+
+        <svg class="pull-right" style="margin-top: 3px;margin-right: 10px;" fill="#000000" height="24" viewBox="0 0 24 24" width="24"><path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+      </td></tr>
+    </table>
+      <table align="center" style="user-select: none;width: 100%;height:calc(100% - 36px);" border="0">
+    <tr id="bodyofsongresults">
+      <td align="center"><r class="textofsearch"></r></td>
+    </tr>
+      </table>
+    </div>
+
+</td>
+<!-- END OF SEARCH -->
+<!-- MOVIES -->
+<td style="display: none;animation: fadeIn 1s;" valign="top" dir="rtl" id="moviey" bgcolor="white">
+
+</td>
+<td style="display:none;animation: fadeIn 1s;" valign="top" dir="rtl" id="movieplaying" bgcolor="white">
+  <table border="0" class="fulltable">
+  <tr><td height="100" width="50%" align="left" style="font-family: Assistant;font-weight: bold;font-size: 72px;vertical-align:bottom;">
+  <c id="moviename"></c></td><td align="right" style="font-family: Assistant;font-weight: bold;font-size: 24px;color: grey;vertical-align:bottom;padding-bottom: 14px;">ז'אנר</td></tr>
+  <tr><td colspan="2" align="center">
+    <video id="videoplayer" onerror="show(404);" width="900" controls controlsList="nodownload"><source src="movies/1.mp4" type="video/mp4"></video><br>
+  </td></tr>
+  </table>
+</td>
+<!-- END OF MOVIES -->
+<!-- STARRED SONGS -->
+<td style="display: none;animation: fadeIn 1s;" valign="top" align="center" dir="rtl" id="starry" bgcolor="white"><div style="direction:rtl;overflow-y:scroll;overflow-wrap:break-word;width:100%;height:100%;">
+<table width="95%" height="36">
+  <tr><td width="100%" style="text-align: center;font-size:20px;background: linear-gradient(to right,  #fff 0%,#444444 50%,#fff 100%);color: white;">הכוכבים של גילעד פדר&nbsp;
+
+<svg class="pull-right" style="margin-top: 3px;margin-right: 10px;" fill="#000000" height="24" viewBox="0 0 24 24" width="24" data-toggle="tooltip" data-placement="bottom" title="הפוך לציבורי">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+</svg>
+  </td></tr>
+</table>
+<br>
+
+
+</div></td>
+<!-- END OF STARRED SONGS -->
+<!-- PLAYLISTS -->
+<td style="display: none;animation: fadeIn 1s;" valign="top" align="center" dir="rtl" id="playlisty" bgcolor="white"><div style="direction:rtl;overflow-y:scroll;overflow-wrap:break-word;width:100%;height:100%;">
+  <table width="95%" height="36">
+    <tr><td width="100%" style="text-align: center;font-size:20px;background: linear-gradient(to right,  #fff 0%,#444444 50%,#fff 100%);color: white;">פלייליסטים&nbsp;
+
+  <svg class="pull-right" style="margin-top: 3px;margin-right: 10px;" fill="#000000" height="24" viewBox="0 0 24 24" width="24" data-toggle="tooltip" data-placement="bottom" title="צור פלייליסט">
+    <path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
+    <path d="M0 0h24v24H0z" fill="none"/>
+    </svg>
+    </td></tr>
+  </table>
+  <br>
+</div>
+</td>
+<!-- END OF PLAYLIST -->
+<!-- HOME -->
+<td style="display:table-cell;animation: fadeIn 1s;" id="homey" bgcolor="white">
+  <a onclick="updateSource('rand');" class="button">
+  <span class="dice">
+<svg height="32" viewBox="0 0 24 24" width="32">
+    <path d="M0 0h24v24H0zm21.02 19c0 1.1-.9 2-2 2h-14c-1.1 0-2-.9-2-2V5c0-1.1.9-2 2-2h14c1.1 0 2 .9 2 2v14z" fill="none"/>
+    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM7.5 18c-.83 0-1.5-.67-1.5-1.5S6.67 15 7.5 15s1.5.67 1.5 1.5S8.33 18 7.5 18zm0-9C6.67 9 6 8.33 6 7.5S6.67 6 7.5 6 9 6.67 9 7.5 8.33 9 7.5 9zm4.5 4.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4.5 4.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm0-9c-.83 0-1.5-.67-1.5-1.5S15.67 6 16.5 6s1.5.67 1.5 1.5S17.33 9 16.5 9z"/>
+</svg></span></a>
+
+
+
+</td></tr>
+<!-- END OF HOME -->
+<!-- END OF BODY -->
+<!-- AUDIOPLAYER -->
+<tr id="theaudiobar"><td colspan="2" height="50" style="background: #f5f5f5;animation: fadeIn 1s;">
+  <table border="0" class="fulltable"><tr>
+    <td><audio id="audio" style="width: 100%;" controls controlsList="nodownload"><source id="audioSource" src="" type="audio/mpeg"></audio></td>
+      <td width="50" align="center">
+
+      </td>
+      <td width="50" align="center">
+        <svg id="starbot" class="botbuttonsgrey" height="24" viewBox="0 0 24 24" width="24">
+            <path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/>
+            <path d="M0 0h24v24H0z" fill="none"/>
+        </svg>
+      </td>
+
+</tr></table>
+</td></tr>
+</table>
+<!-- END OF AUDIOPLAYER -->
+
+<!-- MODALS -->
+
+
+  <div style="direction: rtl;" class="modal fade" id="settings" role="dialog">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close pull-left" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">הגדרות משתמש</h4>
+          </div>
+          <div class="modal-body">
+            <br><p><b>שם תצוגה :</b> </p>
+            <table style="font-size: 14px;" border="0">
+              <tr><td><b>צבע תצוגה לצ'אט:</b>&nbsp;</td><td><div class="input-color-container">
+                  <input id="input-color" value="#ff0000" class="input-color" onchange="isvalidcolor();" type="color">
+                </div></td></tr>
+            </table><br>
+            <p><b>קיצורי מקלדת:</b></p>
+            <table  valign="bottom" style="margin-right: 50px;font-size: 14px;" width="400" border="0">
+              <tr><td class="keyspace">קפיצה קדימה/אחורה ב-10 שניות</td><td><div class="keyshortcut">→</div> <div class="keyshortcut">←</div></td></tr>
+              <tr><td class="keyspace">קפיצה לשיר הבא/הקודם</td><td><div class="keyshortcut">→</div> <div class="keyshortcut">←</div> + <div class="keyshortcut">ctrl</div></td></tr>
+              <tr><td class="keyspace">הגברת/הנמכת עוצמת שמע</td><td><div class="keyshortcut">↑</div> <div class="keyshortcut">↓</div></td></tr>
+              <tr><td class="keyspace">עצור/המשך שיר</td><td><div style="width: 63px !important;" class="keyshortcut">⎵</div></td></tr>
+              <tr><td class="keyspace">התחל לרשום בצ'אט</td><td><div style="width: 63px !important;" class="keyshortcut">↲</div></td></tr>
+              <tr><td class="keyspace">קפיצה לשורת החיפוש</td><td><div class="keyshortcut">f</div> + <div class="keyshortcut">alt</div></td></tr>
+              <tr><td class="keyspace">סמן בכוכב את השיר המנוגן כעת</td><td><div class="keyshortcut">d</div> + <div class="keyshortcut">alt</div></td></tr>
+              <tr><td class="keyspace">התחל לנגן מוזיקה אקראית</td><td><div class="keyshortcut">r</div> + <div class="keyshortcut">alt</div></td></tr>
+
+            </table>
+            <br><p><b>מספר שירים שאהבת:</b> </p>
+            <p><b>מספר שירים ששמעת:</b> </p>
+            <p></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" style="outline: none;" class="btn btn-default pull-left" data-dismiss="modal">סגור</button>  <div onclick="randchatcolor();" class="btn btn-danger pull-right">אפס נתוני משתמש</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="direction: rtl;" class="modal fade" id="songreq" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close pull-left" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">בקשות והעלאות שירים</h4>
+            </div>
+            <div class="modal-body">
+              <form>
+                <h4 style="font-weight: bold !important;">בקשת שיר</h4>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">שם אומן</label>
+                  <input type="text" class="form-control" id="ArtistName" aria-describedby="emailHelp" placeholder="הזן את שם האומן...">
+                  <small id="emailHelp" class="form-text text-muted">השתדל שיהיה אות לאות</small>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">שם אלבום</label>
+                  <input type="text" class="form-control" id="ArtistName" aria-describedby="emailHelp" placeholder="הזן את שם האלבום...">
+                  <small id="emailHelp" class="form-text text-muted">השאר ריק אם מדובר על סינגל</small>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">שם שיר</label>
+                  <input type="text" class="form-control" id="ArtistName" aria-describedby="emailHelp" placeholder="הזן את שם השיר...">
+                  <small id="emailHelp" class="form-text text-muted">הפרד בפסיקים שירים שונים; לאלבום שלם השאר את הקטגוריה ריקה</small>
+                </div>
+                <hr />
+                <h4 style="font-weight: bold !important;">העלאת שירים</h4>
+                <div class="form-group">
+                    <label for="exampleInputFile">בחירת קבצים</label>
+                    <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp" multiple>
+                    <small id="fileHelp" class="form-text text-muted">השתדל להעלות עם כלל המידע בתגיות התואמות</small>
+                  </div>
+              </form>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" style="outline: none;"  class="btn btn-default pull-left" data-dismiss="modal">סגור</button>  <div class="btn btn-success pull-right">שלח</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="direction: rtl;" class="modal fade" id="feedback" role="dialog">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close pull-left" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">פידבק והערות</h4>
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <label for="exampleTextarea">הזן את חוות הדעת</label>
+                  <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+                </div>
+                <p>ניתן גם <a style="text-decoration: underline !important;" href="mailto:ad@dom.il">לשלוח מייל לצוות האתר</a>.</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" style="outline: none;"  class="btn btn-default pull-left" data-dismiss="modal">סגור</button> <div class="btn btn-success pull-right">שלח</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+       <div style="direction: rtl;" class="modal fade" id="about" role="dialog">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close pull-left" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">אודות</h4>
+                </div>
+                <div class="modal-body">
+                  <table width="100%"><tr><td width="100%" align="center">  <img height="100"  class="img-circle" src="pictures/logo.png"></td></tr><tr><td height="20"></td></tr>
+                  <tr><td align="center" style="font-size:14px;">                  <p> האתר נוצר לטובת אנשי אמ"ן. מוזיקה היא חלק מרכזי וחשוב בחיים, וכשמשלבים עבודה ומוזיקה, מקבלים אווירה טובה ועבודה טובה ואפקטיבית.</p></td></tr><tr><td align="center" style="font-size:14px; color:grey; "><q>חייל שטוב לו - יום טוב לו</q></td></tr>
+				  <tr><td align="center" style="font-size:14px;">          <p> גבי אשכנזי, 2011</p></td></tr>
+				  </table>
+
+                  <hr/>
+                  <p><b>תודה רבה לכל התורמים למלאכה:</b></p>
+                  <p>איתי מאירי, הבעלים וההוגה</p>
+				  <p>גילעד פדר, המתכנת היוצר והאגדה</p>
+				  <p>יניב כהן, האדמין השרמנטי</p>
+                  <p>וכמובן תודה ענקית לכם המשתמשים!</p>
+                  <table height="160" width="60%" style="border-spacing: 30px;font-size: 14px; color: grey;" align="center"><tr><td align="center"><figure class="figure"><img src="pictures/itay.png" height="100" class="img-circle"><figcaption align="center" class="figure-caption">איתי מאירי</figcaption></figure></td><td align="center"><figure class="figure"><img src="pictures/Gilad.png" height="100" class="img-circle"><figcaption align="center" class="figure-caption">גילעד פדר</figcaption></figure></td><td align="center"><figure class="figure"><img src="pictures/yaniv.png" height="100" class="img-circle"><figcaption align="center" class="figure-caption">יניב כהן</figcaption></figure></td></tr></table>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" style="outline: none;"  class="btn btn-default pull-left" data-dismiss="modal">סגור</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+<!-- END OF MODALS -->
+</body>
+</html>
