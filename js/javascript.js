@@ -40,11 +40,11 @@
     if (location.hash=="#Search"){
       show(4);
       flag = true;
+      document.getElementById('searchbar').style.backgroundImage = "url('icons/searchfocus.svg')";
     }
     if ((location.hash=="#404")||(!flag)){
         show(404);
       }
-
     }
 
     function playingmovie(movieid){
@@ -171,7 +171,6 @@
         document.getElementById('startop').style.fill='#000';
         document.getElementById('movietop').style.fill='#000';
         document.getElementById('searchbar').style.borderColor ='#00962a';
-        document.getElementById('searchbar').style.backgroundImage = "url('icons/searchfocus.svg')";
         document.getElementById('searchbar').style.color ='#00962a';
       }
       if (nr==404){
@@ -347,6 +346,20 @@ function chatUpdate() {
   }
   else{
     document.getElementById('chat').innerHTML += "<div style='text-align: center;'><font style='font-weight: bold;color:#d43f3a;'>נא לא להספים את הצ'אט. :)</font></div>"
+  }
+}
+
+function hovsvg(num){
+  if (num==1){
+    document.getElementById("searchbar").style.backgroundImage= "url(icons/searchhover.svg)";
+  }
+  if (num==0){
+    if (location.hash == '#Search'){
+      document.getElementById('searchbar').style.backgroundImage = "url('icons/searchfocus.svg')";
+    }
+    else{
+      document.getElementById('searchbar').style.backgroundImage = "url('icons/search.svg')";
+    }
   }
 }
 
