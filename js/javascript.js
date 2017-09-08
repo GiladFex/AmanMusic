@@ -334,14 +334,17 @@ function loadingding() {
     }, 1000+Math.floor(Math.random() * 2000));
 }
 
+
+
 var timing, lastsent = null, diff;
 function chatUpdate() {
   timing = new Date();
   diff = timing - lastsent;
   if (diff>1000){ //not to spam more than 1 message per second.
-    document.getElementById('chat').innerHTML += "<font style='color:"+document.getElementById("input-color").value+";font-weight:bold;' >גילעד פדר:</font> "+document.getElementById('chatting').value+"<br>";
+    document.getElementById('chat').innerHTML += "<font style='color:"+document.getElementById("input-color").value+";font-weight:bold;' >גילעד פדר:</font> "+$('#chatting').html(document.getElementById('chatting').value).text()+"<br>";
     document.getElementById("chatting").value = null;
     document.getElementById("chat").scrollTop = document.getElementById("chat").scrollHeight;
+
   lastsent = new Date();
   }
   else{
