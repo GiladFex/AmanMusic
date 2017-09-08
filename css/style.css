@@ -361,16 +361,23 @@ border-collapse:collapse;
 padding: 0px;
 margin: 0px;
 height:auto;
-width:95%;
+width: 100%;
 text-align: center;
-height: auto;
 background: linear-gradient(to right,  #ffffff 0%,#f1f1f1 50%,#ffffff 100%);
 }
-.starredtable tr {
-height: 110px;
+
+.starredtable tr:first-child{
+  background: white;
+}
+.starredtable tr:first-child:hover{
+
+}
+
+.starredtable tr:not(:first-child) {
+  height: 110px;
  background: linear-gradient(0deg,  transparent 1px, white 1px, white calc(100% - 1px), transparent 1px);
 }
-.starredtable tr:hover {
+.starredtable tr:not(:first-child):hover {
 background: linear-gradient(to right,  #ffffff 0%,#f1f1f1 50%,#ffffff 100%);
 }
 .starredtablealbum{
