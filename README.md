@@ -37,8 +37,4 @@ TASTKS:
 
 * unique hash url for playlists - and entering to the specific one if entered in url bar.
 
-* Make html tags not affect chat.
-
-* Sortable music lists
-
 Thanks for reading and participating!
