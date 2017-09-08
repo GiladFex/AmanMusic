@@ -244,6 +244,7 @@ input[type="radio"]:checked + .icon {
   fill: #000000;
   transition-duration: 0.35s;
 }
+
 #searchbar{
 background: url(icons/search.svg) no-repeat scroll 135px 3px;
 padding-right:30px;
@@ -316,8 +317,8 @@ line-height: 50px;
       transition: height 0.3s;
 }
 #videoplayer {
- max-width: 1500px;
- width:  calc(100% - 350px);
+height: calc(100%);
+width: calc(100%)
 }
 
 @keyframes fadeIn {
