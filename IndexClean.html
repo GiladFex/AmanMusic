@@ -17,7 +17,7 @@
 
 
 <!-- DUMMY LOADING SO EVERYTHING IS PUT IN PLACE -->
-<table style="animation: fadeIn 1s; text-shadow: 2px 2px 0 white, 2px -2px 0 white, -2px 2px 0 white, -2px -2px 0 white;" id="loading" class="fulltable" background="pictures/loadingbg.jpg">
+<table style=" text-shadow: 2px 2px 0 white, 2px -2px 0 white, -2px 2px 0 white, -2px -2px 0 white;" id="loading" class="fulltable" background="pictures/loadingbg.jpg">
 <tr><td height="25%"></td></tr>
   <tr>
     <td height="1" align="center">
@@ -34,10 +34,10 @@
 <!-- END OF DUMMY LOADING -->
 <!-- START OF THE REAL WEBSITE -->
 <!-- The site is built from 3 <tr>s, header, body and audioplayer. -->
-<table style="display: none;animation: fadeIn 1s;" id="realone" class="fulltable">
+<table style="display: none;" id="realone" class="fulltable">
 <!-- HEADER -->
   <tr style="background: linear-gradient(-65deg, #43C6AC, #F8FFAE);border-bottom: 2px solid #e3e3e3;">
-    <div id="colorproblem" style="z-index: 4000;position: absolute;direction: rtl;left: 10px;top: 10px;display:none;animation: fadeIn 1s;" class="alert alert-danger">מצטערים, הצבע בהיר מידי. בחר צבע ככה יותר.</div>
+    <div id="colorproblem" style="z-index: 4000;position: absolute;direction: rtl;left: 10px;top: 10px;display:none;" class="alert alert-danger">מצטערים, הצבע בהיר מידי. בחר צבע ככה יותר.</div>
     <td colspan="2" style="background:rgba(255,255,255,0.8);" height="70">
 
       <table class="fulltable">
@@ -95,8 +95,8 @@
           <td width="77" align="left" valign="middle" style="padding-top: 5px;"><img style="cursor: pointer;" onclick="show(0);" src="pictures/logo3.png"></td>
           <td width="80" align="left" valign="middle">
             <div class="imageWrap">
-    <img id="amancircle" style="display:inline;animation: fadeIn 2s;" onclick="coolgifs();" class="img-circle" height="60" src="pictures/logo4.png">
-    <img id="coolcircle" style="display:none;animation: fadeIn 2s;" onclick="coolgifs();" class="img-circle" height="60" src="pictures/load4.gif" />
+    <img id="amancircle" style="display:inline;" onclick="coolgifs();" class="img-circle" height="60" src="pictures/logo4.png">
+    <img id="coolcircle" style="display:none;" onclick="coolgifs();" class="img-circle" height="60" src="pictures/load4.gif" />
 </div>
 
 </td>
@@ -105,7 +105,7 @@
   </td></tr>
 <!-- END OF HEADER -->
 <!-- BODY -->
-  <tr style="background: #fafafa;animation: fadeIn 1s;"><td width="290">
+  <tr style="background: #fafafa;"><td width="290">
 <!-- STALKING AND CHAT -->
   <table align="right" width="10" style="  box-shadow: 0px 2px 5px #d3d3d3;background: white;font-family: 'Assistant';border-collapse:collapse;padding: 0;margin: 0;height:calc(100% - 40px);">
     <tr><td height="150" style="border-bottom: 1px solid #eeeeee;"><div id="recentactivity" style="direction:rtl;overflow-y:scroll;overflow-wrap:break-word;width:250;height:100%;padding:10px;"></div></td></tr>
@@ -114,8 +114,8 @@
   </table></td>
 <!-- TACHLES -->
 <!-- 404 ERROR -->
-<td style="display: none;animation: fadeIn 1s;"  dir="rtl" id="error" bgcolor="#fafafa">
-  <table border="0" style="text-shadow:-1px -1px 0 #fff,1px -1px 0 #fff,-1px 1px 0 #fff,1px 1px 0 #fff;background-repeat: no-repeat;background-position: right bottom;background-size:auto 400px;" background="pictures/404.png" class="fulltable">
+<td style="display: none;"  dir="rtl" id="error" bgcolor="#fafafa">
+  <table border="0" style="text-shadow:-1px -1px 0 #fff,1px -1px 0 #fff,-1px 1px 0 #fff,1px 1px 0 #fff;background-repeat: no-repeat;background-position: right bottom;background-size:auto 400px;animation: fadeIn 2s;" background="pictures/404.png" class="fulltable">
     <tr><td valign="bottom" align="center" style="font-size: 120px;" dir="ltr">Sorry...</td></tr>
     <tr><td height="50%" valign="top" align="center" style="font-size: 30px;" height="1">לא נמצא העמוד המתאים.</td></tr>
 </table>
@@ -123,8 +123,8 @@
 
 <!-- END OF 404 ERROR -->
 <!-- SEARCH -->
-<td style="display: none;animation: fadeIn 1s;" valign="top" align="center" dir="rtl" id="searchy" bgcolor="#fafafa">
-  <div style="direction:rtl;overflow-y:scroll;overflow-wrap:break-word;width:100%;height:100%;">
+<td style="display: none;" valign="top" align="center" dir="rtl" id="searchy" bgcolor="#fafafa">
+  <div style="direction:rtl;overflow-y:scroll;overflow-wrap:break-word;width:100%;height:100%;animation: fadeIn 2s;">
     <table style="background: white;width: calc(100% - 80px);height: calc(100% - 40px);margin-top: 20px;box-shadow: 0px 2px 5px #d3d3d3;"><tr><td>
 
 <svg class="pull-right" style="margin-top: 3px;margin: 8px;" fill="#000000" height="24" viewBox="0 0 24 24" width="24" data-toggle="tooltip" data-placement="bottom" title="סנן עפי"><path d="M3,2H21V2H21V4H20.92L14,10.92V22.91L10,18.91V10.91L3.09,4H3V2Z" /></svg>
@@ -140,11 +140,12 @@
 </td>
 <!-- END OF SEARCH -->
 <!-- MOVIES -->
-<td style="display: none;animation: fadeIn 1s;" valign="top" dir="rtl" id="moviey" bgcolor="#fafafa">
-
+<td style="display: none;" valign="top" dir="rtl" id="moviey" bgcolor="#fafafa">
+  <div style="direction:rtl;overflow-y:scroll;overflow-wrap:break-word;width:100%;height:100%;animation: fadeIn 2s;">
+</div>
 </td>
-<td style="display:none;animation: fadeIn 1s;" valign="top" dir="rtl" id="movieplaying" bgcolor="#fafafa">
-  <table border="0" class="fulltable">
+<td style="display:none;" valign="top" dir="rtl" id="movieplaying" bgcolor="#fafafa">
+  <table style="animation: fadeIn 2s;" border="0" class="fulltable">
   <tr><td height="100" width="50%" align="left" style="font-family: Assistant;font-weight: bold;font-size: 72px;vertical-align:bottom;">
   <c id="moviename"></c></td><td align="right" style="font-family: Assistant;font-weight: bold;font-size: 24px;color: grey;vertical-align:bottom;padding-bottom: 14px;">ז'אנר</td></tr>
   <tr><td colspan="2" align="center">
@@ -154,9 +155,9 @@
 </td>
 <!-- END OF MOVIES -->
 <!-- STARRED SONGS -->
-<td style="display: none;animation: fadeIn 1s;" valign="top" align="center" dir="rtl" id="starry" bgcolor="#fafafa"><div style="direction:rtl;overflow-y:scroll;overflow-wrap:break-word;width:100%;height:100%;">
+<td style="display: none;" valign="top" align="center" dir="rtl" id="starry" bgcolor="#fafafa"><div style="direction:rtl;overflow-y:scroll;overflow-wrap:break-word;width:100%;height:100%;">
 
-<table style="background: white;width: calc(100% - 80px);height: calc(100% - 40px);margin-top: 20px;box-shadow: 0px 2px 5px #d3d3d3;"><tr><td>
+<table style="background: white;width: calc(100% - 80px);height: calc(100% - 40px);margin-top: 20px;box-shadow: 0px 2px 5px #d3d3d3;animation: fadeIn 2s;"><tr><td>
 
         <svg class="pull-right" style="margin-top: 3px;margin-right: 10px;" fill="#000000" height="24" viewBox="0 0 24 24" width="24" data-toggle="tooltip" data-placement="bottom" title="הפוך לציבורי">
             <path d="M0 0h24v24H0z" fill="none"/>
@@ -174,7 +175,7 @@
 </div></td>
 <!-- END OF STARRED SONGS -->
 <!-- PLAYLISTS -->
-<td style="display: none;animation: fadeIn 1s;" valign="top" align="center" dir="rtl" id="playlisty" bgcolor="#fafafa"><div style="direction:rtl;overflow-y:scroll;overflow-wrap:break-word;width:100%;height:100%;">
+<td style="display: none;" valign="top" align="center" dir="rtl" id="playlisty" bgcolor="#fafafa"><div style="direction:rtl;overflow-y:scroll;overflow-wrap:break-word;width:100%;height:100%;animation: fadeIn 2s;">
   <table style="background: white;width: calc(100% - 80px);height: calc(100% - 40px);margin-top: 20px;box-shadow: 0px 2px 5px #d3d3d3;"><tr><td>
 
 <svg class="pull-right" style="margin-top: 3px;margin: 8px;" fill="#000000" height="24" viewBox="0 0 24 24" width="24" data-toggle="tooltip" data-placement="bottom" title="סנן עפי"><path d="M3,2H21V2H21V4H20.92L14,10.92V22.91L10,18.91V10.91L3.09,4H3V2Z" /></svg>
@@ -191,7 +192,8 @@
 </td>
 <!-- END OF PLAYLIST -->
 <!-- HOME -->
-<td style="display:table-cell;animation: fadeIn 1s;" id="homey" bgcolor="#fafafa">
+<td style="display:table-cell;" id="homey" bgcolor="#fafafa">
+  <div style="direction:rtl;overflow-y:scroll;overflow-wrap:break-word;width:100%;height:100%;animation: fadeIn 2s;">
   <a onclick="updateSource('rand');" class="button">
   <span class="dice">
 <svg height="32" viewBox="0 0 24 24" width="32">
@@ -200,12 +202,12 @@
 </svg></span></a>
 
 
-
+</div>
 </td></tr>
 <!-- END OF HOME -->
 <!-- END OF BODY -->
 <!-- AUDIOPLAYER -->
-<tr id="theaudiobar"><td colspan="2" style="background: #ffffff;height: 50px;box-shadow: 0px -1px 2px #d3d3d3;animation: fadeIn 1s;">
+<tr id="theaudiobar"><td colspan="2" style="background: #ffffff;height: 50px;box-shadow: 0px -1px 2px #d3d3d3;animation: fadeIn 2s;">
   <table border="0" class="fulltable"><tr>
     <td><audio id="audio" style="width: 100%;" controls controlsList="nodownload"><source id="audioSource" src="" type="audio/mpeg"></audio></td>
       <td width="50" align="center">
