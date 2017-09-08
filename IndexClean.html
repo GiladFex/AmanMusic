@@ -51,6 +51,7 @@
               <ul style="text-align: right;animation: fadeIn 0.325s;" class="dropdown-menu">
                 <li><a data-toggle="modal" data-target="#settings"><text style="margin-right: 7px;">הגדרות משתמש&nbsp;</text><img style="margin-right: -10px;vertical-align: text-top;" src="icons/settings.png"></a></li>
                 <li><a data-toggle="modal" data-target="#songreq"><text style="margin-right: 7px;">בקשת והעלאת שירים&nbsp;</text><img style="margin-right: -10px;vertical-align: text-top;" src="icons/upload.png"></a></li>
+                <li><a data-toggle="modal" data-target="#adminpanel"><text style="margin-right: 7px;">Godmode&nbsp;</text><img style="margin-right: -10px;vertical-align: text-top;" src="icons/admin.png"></a></li>
                 <li class="divider"></li>
                 <li><a data-toggle="modal" data-target="#feedback"><text style="margin-right: 7px;">פידבק והערות&nbsp;</text><img style="margin-right: -10px;vertical-align: text-top;" src="icons/feedback.png"></a></li>
                 <li><a data-toggle="modal" data-target="#about"><text style="margin-right: 7px;">אודות&nbsp;</text><img style="margin-right: -10px;vertical-align: text-top;" src="icons/about.png"></a></li>
@@ -127,7 +128,17 @@
   <div style="direction:rtl;overflow-y:scroll;overflow-wrap:break-word;width:100%;height:100%;animation: fadeIn 2s;">
     <table style="background: white;width: calc(100% - 80px);height: calc(100% - 40px);margin-top: 20px;box-shadow: 0px 2px 5px #d3d3d3;"><tr><td>
 
-<svg class="pull-right" style="margin-top: 3px;margin: 8px;" fill="#000000" height="24" viewBox="0 0 24 24" width="24" data-toggle="tooltip" data-placement="bottom" title="סנן עפי"><path d="M3,2H21V2H21V4H20.92L14,10.92V22.91L10,18.91V10.91L3.09,4H3V2Z" /></svg>
+
+      <div class="dropdown" style="margin-right: -1px;">
+        <svg class="pull-right dropdown-toggle" style="margin-top: 3px;margin: 8px;" fill="#000000" height="24" viewBox="0 0 24 24" width="24" data-toggle="dropdown"><path d="M3,2H21V2H21V4H20.92L14,10.92V22.91L10,18.91V10.91L3.09,4H3V2Z" /></svg>
+      <ul style="text-align: right;animation: fadeIn 0.325s;direction: rtl;" class="dropdown-menu dropdown-menu-right">
+        <li><a data-toggle="modal" data-target="#"><img src="icons/cardview.png"><text style="margin-right: 7px;">הצג בכרטיסיות&nbsp;</text></a></li>
+        <li><a data-toggle="modal" data-target="#"><img src="icons/listview.png"><text style="margin-right: 7px;">הצג ברשימה&nbsp;</text></a></li>
+
+      </ul>
+    </div>
+
+
 
 
       <table align="center" style="user-select: none;width: 100%;height:calc(100% - 36px);" border="0">
@@ -171,31 +182,58 @@
 </td>
 <!-- END OF MOVIES -->
 <!-- STARRED SONGS -->
-<td style="display: none;" valign="top" align="center" dir="rtl" id="starry" bgcolor="#fafafa"><div style="direction:rtl;overflow-y:scroll;overflow-wrap:break-word;width:100%;height:100%;">
+<td style="display: none;" valign="top" align="center" dir="rtl" id="starry" bgcolor="#fafafa">
 
-<table style="background: white;width: calc(100% - 80px);height: calc(100% - 40px);margin-top: 20px;box-shadow: 0px 2px 5px #d3d3d3;animation: fadeIn 2s;"><tr><td>
+<div style="background: white;width: calc(100% - 80px);height: calc(100% - 40px);margin-top: 20px;box-shadow: 0px 2px 5px #d3d3d3;animation: fadeIn 2s;overflow-y:scroll;overflow-x:hidden;overflow-wrap:break-word;">
 
-        <svg class="pull-right" style="margin-top: 3px;margin-right: 10px;" fill="#000000" height="24" viewBox="0 0 24 24" width="24" data-toggle="tooltip" data-placement="bottom" title="הפוך לציבורי">
-            <path d="M0 0h24v24H0z" fill="none"/>
-            <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
-        </svg>
 
-      <table align="center" style="user-select: none;width: 100%;height:calc(100% - 36px);" border="0">
-    <tr id="bodyofsongresults">
-      <td align="center"><r class="textofsearch"></r></td>
-    </tr>
-      </table>
-    </div>
-</td></tr></table>
 
-</div></td>
+
+<table border="0" class="starredtable">
+  <tr><td height="32" align="right" colspan="4">
+
+              <svg style="margin-top: 6px; margin-right: 10px;" fill="#000000" height="24" viewBox="0 0 24 24" width="24" data-toggle="tooltip" data-placement="bottom" title="הפוך לציבורי">
+                <path d="M0 0h24v24H0z" fill="none"/>
+                <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+            </svg>
+
+
+
+          </td></tr>
+        <tr><td width="64">
+        <svg onclick="updateSource(1)" fill="#444444" height="48" viewBox="0 0 24 24" width="48"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg></td><td align="center" width="50"><img class="starredtablealbum" src="pictures/album.png"></td><td align="right" class="stardescs">When We Were Young<br>Adele</td><td><svg fill="#444444" height="36" viewBox="0 0 24 24" width="36"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/><path d="M0 0h24v24H0z" fill="none"/></svg></td></tr>
+        <tr><td width="64">
+        <svg onclick="updateSource(1)"  fill="#444444" height="48" viewBox="0 0 24 24" width="48"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg></td><td align="center" width="50"><img class="starredtablealbum" src="pictures/album2.jpg"></td><td align="right" class="stardescs">Perfect Places<br>Lorde</td><td><svg fill="#444444" height="36" viewBox="0 0 24 24" width="36"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/><path d="M0 0h24v24H0z" fill="none"/></svg></td></tr>
+        <tr><td width="64">
+        <svg onclick="updateSource(1)"  fill="#444444" height="48" viewBox="0 0 24 24" width="48"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg></td><td align="center" width="50"><img class="starredtablealbum" src="pictures/album3.png"></td><td align="right" class="stardescs">Shape of You<br>Ed Sheeran</td><td><svg fill="#444444" height="36" viewBox="0 0 24 24" width="36"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/><path d="M0 0h24v24H0z" fill="none"/></svg></td></tr>
+        <tr><td width="64">
+        <svg onclick="updateSource(1)"  fill="#444444" height="48" viewBox="0 0 24 24" width="48"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg></td><td align="center" width="50"><img class="starredtablealbum" src="pictures/album4.jpg"></td><td align="right" class="stardescs">Where You Are<br>Moana Soundtrack</td><td><svg fill="#444444" height="36" viewBox="0 0 24 24" width="36"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/><path d="M0 0h24v24H0z" fill="none"/></svg></td></tr>
+        <tr><td width="64">
+        <svg onclick="updateSource(1)"  fill="#444444" height="48" viewBox="0 0 24 24" width="48"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg></td><td align="center" width="50"><img class="starredtablealbum" src="pictures/album5.png"></td><td align="right" class="stardescs">24K Magic<br>Bruno Mars</td><td><svg fill="#444444" height="36" viewBox="0 0 24 24" width="36"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/><path d="M0 0h24v24H0z" fill="none"/></svg></td></tr>
+        <tr><td width="64">
+        <svg onclick="updateSource(1)"  fill="#444444" height="48" viewBox="0 0 24 24" width="48"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg></td><td align="center" width="50"><img class="starredtablealbum" src="pictures/album6.png"></td><td align="right" class="stardescs">Daft Punk<br>Pentatonix</td><td><svg fill="#444444" height="36" viewBox="0 0 24 24" width="36"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/><path d="M0 0h24v24H0z" fill="none"/></svg></td></tr>
+        <tr><td width="64">
+        <svg onclick="updateSource(1)"  fill="#444444" height="48" viewBox="0 0 24 24" width="48"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg></td><td align="center" width="50"><img class="starredtablealbum" src="pictures/album7.png"></td><td align="right" class="stardescs">One More Time<br>Arianna Grande</td><td><svg fill="#444444" height="36" viewBox="0 0 24 24" width="36"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/><path d="M0 0h24v24H0z" fill="none"/></svg></td></tr>
+        <tr><td width="64">
+        <svg onclick="updateSource(1)"  fill="#444444" height="48" viewBox="0 0 24 24" width="48"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg></td><td align="center" width="50"><img class="starredtablealbum" src="pictures/album8.jpg"></td><td align="right" class="stardescs">ממעמקים<br>עידן רייכל</td><td><svg fill="#444444" height="36" viewBox="0 0 24 24" width="36"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/><path d="M0 0h24v24H0z" fill="none"/></svg></td></tr>
+        </table>
+</div>
+
+
+</td>
 <!-- END OF STARRED SONGS -->
 <!-- PLAYLISTS -->
 <td style="display: none;" valign="top" align="center" dir="rtl" id="playlisty" bgcolor="#fafafa"><div style="direction:rtl;overflow-y:scroll;overflow-wrap:break-word;width:100%;height:100%;animation: fadeIn 2s;">
   <table style="background: white;width: calc(100% - 80px);height: calc(100% - 40px);margin-top: 20px;box-shadow: 0px 2px 5px #d3d3d3;"><tr><td>
 
-<svg class="pull-right" style="margin-top: 3px;margin: 8px;" fill="#000000" height="24" viewBox="0 0 24 24" width="24" data-toggle="tooltip" data-placement="bottom" title="סנן עפי"><path d="M3,2H21V2H21V4H20.92L14,10.92V22.91L10,18.91V10.91L3.09,4H3V2Z" /></svg>
+    <div class="dropdown" style="margin-right: -1px;">
+      <svg class="pull-right dropdown-toggle" style="margin-top: 3px;margin: 8px;" fill="#000000" height="24" viewBox="0 0 24 24" width="24" data-toggle="dropdown"><path d="M3,2H21V2H21V4H20.92L14,10.92V22.91L10,18.91V10.91L3.09,4H3V2Z" /></svg>
+    <ul style="text-align: right;animation: fadeIn 0.325s;direction: rtl;" class="dropdown-menu dropdown-menu-right">
+      <li><a data-toggle="modal" data-target="#"><img src="icons/cardview.png"><text style="margin-right: 7px;">הצג בכרטיסיות&nbsp;</text></a></li>
+      <li><a data-toggle="modal" data-target="#"><img src="icons/listview.png"><text style="margin-right: 7px;">הצג ברשימה&nbsp;</text></a></li>
 
+    </ul>
+  </div>
 
     <table align="center" style="user-select: none;width: 100%;height:calc(100% - 36px);" border="0">
   <tr id="bodyofsongresults">
@@ -359,6 +397,19 @@
           </div>
         </div>
       </div>
+
+      <div style="direction: rtl;" class="modal fade" id="adminpanel" role="dialog">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close pull-left" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Godmode</h4>
+              </div>
+              <div class="modal-body">
+                צריך להוסיף לכאן את כל השטיקים שניתן לערוך כמנהל.
+            </div>
+          </div>
+        </div>
 
       <div style="direction: rtl;" class="modal fade" id="feedback" role="dialog">
           <div class="modal-dialog modal-lg">
