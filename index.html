@@ -45,7 +45,7 @@ body{
 
 #tachles{
   margin-right: 20px;
-  margin-top: 110px;
+  margin-top: 40px;
   float:right;
   width: calc(100% - 310px);
   padding-bottom: 50px;
@@ -206,6 +206,64 @@ body{
  }
 
 
+#amanlogo{
+  width: 70px;
+  height: 65px;
+  padding-top: 5px;
+  position:absolute;
+  text-align: left;
+}
+#amantext{
+  width: 75px;
+  height: 55px;
+  padding-top: 15px;
+  right: 73px;
+  position:absolute;
+}
+#homebtndiv{
+  width: 70px;
+  height: 45px;
+  right: 200px;
+  position:absolute;
+  text-align: center;
+  padding-top: 25px;
+}
+#playlistbtndiv{
+  width: 70px;
+  height: 45px;
+  right: 270px;
+  position:absolute;
+  text-align: center;
+  padding-top: 25px;
+}
+#starredbtndiv{
+  width: 70px;
+  height: 45px;
+  right: 340px;
+  position:absolute;
+  text-align: center;
+  padding-top: 25px;
+}
+#moviesbtndiv{
+  width: 70px;
+  height: 45px;
+  right: 410px;
+  position:absolute;
+  text-align: center;
+  padding-top: 25px;
+}
+#searchbtndiv{
+  width: 160px;
+  height: 70px;
+  left: 100px;
+  position:absolute;
+}
+#accountbtndiv{
+  width: 70px;
+  height: 70px;
+  left: 20px;
+  position:absolute;
+}
 </style>
 <script>
 
@@ -265,11 +323,64 @@ document.getElementsByID('tachles').style.margin = (mul*20)+"px";
 </head>
 <body onresize="resizing();" onload="resizing();">
 <div id="wrapper">
+<!-- HEADER -->
 <div id="header">
 
-needs to add all...
+<div id="amanlogo">
+<img src="pictures/logo4.png" />
+</div>
+<div id="amantext">
+<img src="pictures/logo3.png" />
+</div>
+<div id="homebtndiv">
+
+  <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" data-toggle="tooltip">
+      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+      <path d="M0 0h24v24H0z" fill="none"/>
+  </svg>
 
 </div>
+<div id="playlistbtndiv">
+
+  <svg enable-background="new 0 0 24 24" fill="#000000" height="24"  viewBox="0 0 24 24" width="24" x="0px" xml:space="preserve" y="0px">
+  <g>
+    <path d="M0,0h24v24H0V0z" fill="none"/>
+    <g>
+      <rect height="2" width="12" x="4" y="10"/>
+      <rect height="2" width="12" x="4" y="6"/>
+      <rect height="2" width="8" x="4" y="14"/>
+      <polygon points="14,14 14,20 19,17   "/>
+    </g>
+  </g>
+  </svg>
+
+</div>
+<div id="starredbtndiv">
+
+  <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24">
+      <path d="M0 0h24v24H0z" fill="none"/>
+      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+      <path d="M0 0h24v24H0z" fill="none"/>
+  </svg>
+
+</div>
+<div id="moviesbtndiv">
+
+  <svg  fill="#000000" height="24" viewBox="0 0 24 24" width="24">
+      <path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/>
+      <path d="M0 0h24v24H0z" fill="none"/>
+  </svg>
+
+</div>
+<div id="searchbtndiv">
+  SEARCH
+</div>
+<div id="accountbtndiv">
+  ACCOUNT
+</div>
+</div>
+<!-- END OF HEADER -->
+<!-- CONTENT -->
 <div id="content">
 
 <div id="tachles">
@@ -358,6 +469,8 @@ needs to add all...
 </div>
 
 </div>
+<!-- END OF CONTENT -->
+<!-- AUDIOBAR//FOOTER -->
 <div id="footer">
 
 
@@ -369,6 +482,7 @@ needs to add all...
 
 </div>
 </div>
+<!-- END OF AUDIOBAR//FOOTER -->
 
 
 </body>
