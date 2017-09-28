@@ -231,7 +231,7 @@ body{
 #playlistbtndiv{
   width: 70px;
   height: 45px;
-  right: 270px;
+  right: 300px;
   position:absolute;
   text-align: center;
   padding-top: 25px;
@@ -239,7 +239,7 @@ body{
 #starredbtndiv{
   width: 70px;
   height: 45px;
-  right: 340px;
+  right: 400px;
   position:absolute;
   text-align: center;
   padding-top: 25px;
@@ -247,22 +247,27 @@ body{
 #moviesbtndiv{
   width: 70px;
   height: 45px;
-  right: 410px;
+  right: 500px;
   position:absolute;
   text-align: center;
   padding-top: 25px;
 }
 #searchbtndiv{
-  width: 160px;
-  height: 70px;
+  height: 50px;
   left: 100px;
   position:absolute;
+  padding-top: 22px;
 }
 #accountbtndiv{
-  width: 70px;
-  height: 70px;
-  left: 20px;
+  height: 55px;
+  left: 15px;
   position:absolute;
+  padding-top: 15px;
+}
+#searchinput{
+  background-color: rgba(0,0,0,0);
+  border: 1px solid black;
+  outline: none;
 }
 </style>
 <script>
@@ -373,10 +378,15 @@ document.getElementsByID('tachles').style.margin = (mul*20)+"px";
 
 </div>
 <div id="searchbtndiv">
-  SEARCH
+<input id="searchinput" type="text" />
 </div>
 <div id="accountbtndiv">
-  ACCOUNT
+
+  <svg fill="#000000" height="36" viewBox="0 0 24 24" width="36">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+      <path d="M0 0h24v24H0z" fill="none"/>
+  </svg>
+
 </div>
 </div>
 <!-- END OF HEADER -->
