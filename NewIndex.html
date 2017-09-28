@@ -1,0 +1,376 @@
+<html>
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Assistant:400,600,700&amp;subset=hebrew" rel="stylesheet">
+<style>
+*{
+  margin: 0;
+  spacing: 0;
+  direction: rtl;
+  font-family: 'Assistant';
+
+}
+
+body{
+  background: #fafafa;
+}
+
+#wrapper{
+  height: 100%;
+
+}
+
+#header{
+  background: linear-gradient(-65deg, #d6f0ea, #f9fbeb);
+  height: 70px;
+  box-shadow: 0px 1px 2px #d3d3d3;
+  z-index:1000;
+  width: 100%;
+  position: fixed;
+}
+
+#content{
+  background: #fafafa;
+  height: calc(100% - 120px);
+  min-height: 400px;
+}
+
+#footer{
+  background: #ffffff;
+  height: 50px;
+  box-shadow: 0px -1px 2px #d3d3d3;
+  position:fixed;
+  width:100%;
+  bottom:0px;
+}
+
+#tachles{
+  margin-right: 20px;
+  margin-top: 110px;
+  float:right;
+  width: calc(100% - 310px);
+  display:inline-block;
+  align-content: center;
+
+}
+
+#stalk{
+  margin: 20px;
+  left: 20px;
+  top: 90px;
+  background: #ffffff;
+  width: 250px;
+  height: calc(100% - 200px);
+  min-height: 250px;
+  box-shadow: 0px 2px 5px #d3d3d3;
+  position: fixed;
+}
+
+#audio{
+  width: calc(100% - 70px);
+  height: 40px;
+}
+#playlistbot{
+  margin-right: 5px;
+  height: 30px;
+}
+
+#starbot{
+  margin-right: 5px;
+  height: 30px;
+}
+
+
+#facebook{
+    height: 150px;
+    padding:10px;
+}
+
+#chat{
+  height: calc(100% - 214px);
+  border-top: 1px solid #eeeeee;
+  padding:10px;
+}
+
+#chatting{
+  height: 24px;
+  background: #f0f0f0;
+  outline: none;
+  border: 1px solid #eceee7;
+  width: 100%;
+}
+
+
+.albumart{
+  border-radius: 4px;
+  object-fit: cover;
+  width:230px;
+  height:277px;
+	text-align: center;
+  background: white;
+  box-shadow: 0px 2px 5px #d3d3d3;
+  position: relative;
+  margin: 55px;
+  margin-top: 70px;
+  float:right;
+}
+
+.albumart {
+  transition-duration: 0.45s;
+ }
+
+ .overflowing {
+   width: 230px;
+   overflow:hidden;
+   text-overflow:ellipsis;
+   white-space:nowrap;
+   display:inline-block;
+ }
+
+
+.songname{
+	color: #000000;
+	font-size: 18px;
+	direction: rtl;
+	font-weight: 600;
+}
+
+
+.artistname{
+	color: #7c7c7c;
+	font-size: 16px;
+  font-weight: 400;
+}
+
+.cardphoto{
+  border-top-right-radius:4px;
+  border-top-left-radius:4px;
+  object-fit: cover;
+  width:230px;
+  height:230px;
+}
+
+
+ .albumart:hover .album{
+  transition-duration: 0.25s;
+  filter: brightness(50%);
+ }
+
+
+ .albumart .playit {
+  position: absolute;
+  left: 55;
+  top: 55;
+  display: none;
+ }
+
+ .albumart:hover .playit  {
+   display: block;
+ }
+
+
+ .albumart .loveit {
+   position: absolute;
+   left: 16;
+   top: 98;
+   display: none;
+ }
+
+ .albumart:hover .loveit  {
+  display: block;
+ }
+
+ .albumart .playlistit {
+   position: absolute;
+   left: 180;
+   top: 100;
+   display: none;
+ }
+
+
+ .albumart:hover .playit  {
+   display: block;
+ }
+
+ .albumart:hover .playlistit  {
+   display: block;
+ }
+
+ .cardbtn{
+   fill: rgba(255,255,255,0.6);
+   transition-duration: 0.375s;
+   cursor:pointer;
+ }
+
+ .cardbtn:hover{
+   fill: rgba(255,255,255,1);
+   transition-duration: 0.375s;
+ }
+
+
+</style>
+<script>
+
+function resizing(){
+  var w = window.outerWidth;
+  var h = window.outerHeight;
+
+  //alert(smallerratio);
+  var mul=1;
+    if ((w<=1430)||(h<=758)){ //if screen size is too small
+      mul=0.5;
+    }
+
+
+    for (i=0; i<10 ; i++){
+
+  document.getElementsByClassName('albumart')[i].style.width = (mul*230)+"px";
+  document.getElementsByClassName('albumart')[i].style.height = (mul*277)+"px";
+  document.getElementsByClassName('cardphoto')[i].style.width = (mul*230)+"px";
+  document.getElementsByClassName('cardphoto')[i].style.height = (mul*230)+"px";
+  document.getElementsByClassName('overflowing')[i].style.width = (mul*230)+"px";
+  document.getElementsByClassName('songname')[i].style.fontSize = (mul*18)+"px";
+  document.getElementsByClassName('artistname')[i].style.fontSize = (mul*16)+"px";
+
+  document.getElementsByClassName('play')[i].style.width = (mul*120)+"px";
+  document.getElementsByClassName('playlist')[i].style.width = (mul*36)+"px";
+  document.getElementsByClassName('star')[i].style.width = (mul*36)+"px";
+
+  if (mul==0.5){
+    document.getElementsByClassName('playit')[i].style.top= "-3px";
+    document.getElementsByClassName('playit')[i].style.left= "27px";
+    document.getElementsByClassName('loveit')[i].style.top= "40px";
+    document.getElementsByClassName('loveit')[i].style.left= "3px";
+    document.getElementsByClassName('playlistit')[i].style.top= "42px";
+    document.getElementsByClassName('playlistit')[i].style.left= "88px";
+
+  }
+
+  else {
+    document.getElementsByClassName('playit')[i].style.top= "55px";
+    document.getElementsByClassName('playit')[i].style.left= "55px";
+    document.getElementsByClassName('loveit')[i].style.top= "98px";
+    document.getElementsByClassName('loveit')[i].style.left= "16px";
+    document.getElementsByClassName('playlistit')[i].style.top= "100px";
+    document.getElementsByClassName('playlistit')[i].style.left= "180px";
+  }
+
+
+}
+document.getElementsByID('tachles').style.margin = (mul*20)+"px";
+
+}
+
+
+
+</script>
+</head>
+<body onresize="resizing();" onload="resizing();">
+<div id="wrapper">
+<div id="header">
+
+needs to add all...
+
+</div>
+<div id="content">
+
+<div id="tachles">
+
+  <div class="albumart"><div class="album"><img class="cardphoto" src="pictures/album.png"></div>
+  <div class="playit"><svg class="play cardbtn" onclick="updateSource(1);" height="120" viewBox="0 0 24 24" width="120"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg></div>
+  <div class="loveit" class="loveit"><svg class="star cardbtn" height="36" viewBox="0 0 24 24" width="36"><path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/><path d="M0 0h24v24H0z" fill="none"/></svg></div>
+  <div class="playlistit">
+  <svg class="playlist cardbtn" height="36" viewBox="0 0 24 24" width="36"><path d="M0 0h24v24H0z" fill="none"/><path d="M14 10H2v2h12v-2zm0-4H2v2h12V6zm4 8v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 16h8v-2H2v2z"/></svg>
+  </div><div class="songname"><div class="overflowing">When We Were Young</div><div class="artistname">Adele</div></td></div></div>
+
+  <div class="albumart"><div class="album"><img class="cardphoto" src="pictures/album2.jpg"></div>
+  <div class="playit"><svg class="play cardbtn" onclick="updateSource(1);" height="120" viewBox="0 0 24 24" width="120"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg></div>
+  <div class="loveit" class="loveit"><svg class="star cardbtn" height="36" viewBox="0 0 24 24" width="36"><path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/><path d="M0 0h24v24H0z" fill="none"/></svg></div>
+  <div class="playlistit">
+  <svg class="playlist cardbtn" height="36" viewBox="0 0 24 24" width="36"><path d="M0 0h24v24H0z" fill="none"/><path d="M14 10H2v2h12v-2zm0-4H2v2h12V6zm4 8v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 16h8v-2H2v2z"/></svg>
+</div><div class="songname"><div class="overflowing">Perfect Places</div><div class="artistname">Lorde</div></td></div></div>
+
+  <div class="albumart"><div class="album"><img class="cardphoto" src="pictures/album3.png"></div>
+  <div class="playit"><svg class="play cardbtn" onclick="updateSource(1);" height="120" viewBox="0 0 24 24" width="120"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg></div>
+  <div class="loveit" class="loveit"><svg class="star cardbtn" height="36" viewBox="0 0 24 24" width="36"><path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/><path d="M0 0h24v24H0z" fill="none"/></svg></div>
+  <div class="playlistit">
+  <svg class="playlist cardbtn" height="36" viewBox="0 0 24 24" width="36"><path d="M0 0h24v24H0z" fill="none"/><path d="M14 10H2v2h12v-2zm0-4H2v2h12V6zm4 8v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 16h8v-2H2v2z"/></svg>
+  </div><div class="songname"><div class="overflowing">Shape of You</div><div class="artistname">Ed Sheeran</div></td></div></div>
+
+  <div class="albumart"><div class="album"><img class="cardphoto" src="pictures/album4.jpg"></div>
+  <div class="playit"><svg class="play cardbtn" onclick="updateSource(1);" height="120" viewBox="0 0 24 24" width="120"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg></div>
+  <div class="loveit" class="loveit"><svg class="star cardbtn" height="36" viewBox="0 0 24 24" width="36"><path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/><path d="M0 0h24v24H0z" fill="none"/></svg></div>
+  <div class="playlistit">
+  <svg class="playlist cardbtn" height="36" viewBox="0 0 24 24" width="36"><path d="M0 0h24v24H0z" fill="none"/><path d="M14 10H2v2h12v-2zm0-4H2v2h12V6zm4 8v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 16h8v-2H2v2z"/></svg>
+  </div><div class="songname"><div class="overflowing">How Far I'll Go</div><div class="artistname">Moana Soundtrack</div></td></div></div>
+
+  <div class="albumart"><div class="album"><img class="cardphoto" src="pictures/album9.jpg"></div>
+  <div class="playit"><svg class="play cardbtn" onclick="updateSource(1);" height="120" viewBox="0 0 24 24" width="120"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg></div>
+  <div class="loveit" class="loveit"><svg class="star cardbtn" height="36" viewBox="0 0 24 24" width="36"><path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/><path d="M0 0h24v24H0z" fill="none"/></svg></div>
+  <div class="playlistit">
+  <svg class="playlist cardbtn" height="36" viewBox="0 0 24 24" width="36"><path d="M0 0h24v24H0z" fill="none"/><path d="M14 10H2v2h12v-2zm0-4H2v2h12V6zm4 8v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 16h8v-2H2v2z"/></svg>
+  </div><div class="songname"><div class="overflowing">Pull Yourgself Together</div><div class="artistname">The Boxer Rebellion</div></td></div></div>
+
+  <div class="albumart"><div class="album"><img class="cardphoto" src="pictures/album10.jpg"></div>
+  <div class="playit"><svg class="play cardbtn" onclick="updateSource(1);" height="120" viewBox="0 0 24 24" width="120"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg></div>
+  <div class="loveit" class="loveit"><svg class="star cardbtn" height="36" viewBox="0 0 24 24" width="36"><path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/><path d="M0 0h24v24H0z" fill="none"/></svg></div>
+  <div class="playlistit">
+  <svg class="playlist cardbtn" height="36" viewBox="0 0 24 24" width="36"><path d="M0 0h24v24H0z" fill="none"/><path d="M14 10H2v2h12v-2zm0-4H2v2h12V6zm4 8v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 16h8v-2H2v2z"/></svg>
+</div><div class="songname"><div class="overflowing">You Can't Always Get What You Want</div><div class="artistname">The Rolling Stones</div></td></div></div>
+
+  <div class="albumart"><div class="album"><img class="cardphoto" src="pictures/album5.png"></div>
+  <div class="playit"><svg class="play cardbtn" onclick="updateSource(1);" height="120" viewBox="0 0 24 24" width="120"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg></div>
+  <div class="loveit" class="loveit"><svg class="star cardbtn" height="36" viewBox="0 0 24 24" width="36"><path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/><path d="M0 0h24v24H0z" fill="none"/></svg></div>
+  <div class="playlistit">
+  <svg class="playlist cardbtn" height="36" viewBox="0 0 24 24" width="36"><path d="M0 0h24v24H0z" fill="none"/><path d="M14 10H2v2h12v-2zm0-4H2v2h12V6zm4 8v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 16h8v-2H2v2z"/></svg>
+  </div><div class="songname"><div class="overflowing">24K Magic</div><div class="artistname">Bruno Mars</div></td></div></div>
+
+  <div class="albumart"><div class="album"><img class="cardphoto" src="pictures/album6.png"></div>
+  <div class="playit"><svg class="play cardbtn" onclick="updateSource(1);" height="120" viewBox="0 0 24 24" width="120"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg></div>
+  <div class="loveit" class="loveit"><svg class="star cardbtn" height="36" viewBox="0 0 24 24" width="36"><path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/><path d="M0 0h24v24H0z" fill="none"/></svg></div>
+  <div class="playlistit">
+  <svg class="playlist cardbtn" height="36" viewBox="0 0 24 24" width="36"><path d="M0 0h24v24H0z" fill="none"/><path d="M14 10H2v2h12v-2zm0-4H2v2h12V6zm4 8v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 16h8v-2H2v2z"/></svg>
+  </div><div class="songname"><div class="overflowing">Daft Punk</div><div class="artistname">Pentatonix</div></td></div></div>
+
+  <div class="albumart"><div class="album"><img class="cardphoto" src="pictures/album7.png"></div>
+  <div class="playit"><svg class="play cardbtn" onclick="updateSource(1);" height="120" viewBox="0 0 24 24" width="120"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg></div>
+  <div class="loveit" class="loveit"><svg class="star cardbtn" height="36" viewBox="0 0 24 24" width="36"><path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/><path d="M0 0h24v24H0z" fill="none"/></svg></div>
+  <div class="playlistit">
+  <svg class="playlist cardbtn" height="36" viewBox="0 0 24 24" width="36"><path d="M0 0h24v24H0z" fill="none"/><path d="M14 10H2v2h12v-2zm0-4H2v2h12V6zm4 8v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 16h8v-2H2v2z"/></svg>
+  </div><div class="songname"><div class="overflowing">One Last Time</div><div class="artistname">Arianna Grande</div></td></div></div>
+
+  <div class="albumart"><div class="album"><img class="cardphoto" src="pictures/album8.jpg"></div>
+  <div class="playit"><svg class="play cardbtn" onclick="updateSource(1);" height="120" viewBox="0 0 24 24" width="120"><path d="M0 0h24v24H0z" fill="none"/><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg></div>
+  <div class="loveit" class="loveit"><svg class="star cardbtn" height="36" viewBox="0 0 24 24" width="36"><path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/><path d="M0 0h24v24H0z" fill="none"/></svg></div>
+  <div class="playlistit">
+  <svg class="playlist cardbtn" height="36" viewBox="0 0 24 24" width="36"><path d="M0 0h24v24H0z" fill="none"/><path d="M14 10H2v2h12v-2zm0-4H2v2h12V6zm4 8v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM2 16h8v-2H2v2z"/></svg>
+</div><div class="songname"><div class="overflowing">ממעמקים</div><div class="artistname">עידן רייכל</div></td></div></div>
+
+
+
+
+
+</div>
+
+<div id="stalk">
+<div id="facebook">facebook</div>
+<div id="chat">chat</div>
+<div id="typechat"><input onkeydown = "if (event.keyCode == 13) chatUpdate();" id="chatting" placeholder="הצטרפ/י לשיחה!" type="text"></div>
+
+</div>
+
+</div>
+<div id="footer">
+
+
+
+  <svg id="playlistbot" class="dropdown-toggle botbuttonsgrey" data-toggle="dropdown" enable-background="new 0 0 24 24" height="24"viewBox="0 0 24 24" width="24" x="0px" y="0px"><g id="XMLID_1_"><path d="M0,0h24v24H0V0z" fill="none"/><g id="XMLID_2_"><rect height="2" id="XMLID_3_" width="12" x="4" y="10"/><rect height="2" id="XMLID_4_" width="12" x="4" y="6"/><rect height="2" id="XMLID_5_" width="8" x="4" y="14"/><polygon id="XMLID_6_" points="14,14 14,20 19,17   "/></g></g></svg>
+  <svg id="starbot" class="botbuttonsgrey" height="24" viewBox="0 0 24 24" width="24"><path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+
+  <audio id="audio" controls controlsList="nodownload"><source id="audioSource" src="" type="audio/mpeg"></audio>
+
+</div>
+</div>
+
+
+</body>
+</html>
