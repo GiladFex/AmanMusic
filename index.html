@@ -1,6 +1,7 @@
 <html>
 <head>
   <link href="https://fonts.googleapis.com/css?family=Assistant:400,600,700&amp;subset=hebrew" rel="stylesheet">
+  <title>אמן מוזיקה</title>
 <style>
 *{
   margin: 0;
@@ -45,11 +46,10 @@ body{
 
 #tachles{
   margin-right: 20px;
-  margin-top: 40px;
+  margin-top: 110px;
   float:right;
-  width: calc(100% - 310px);
-  padding-bottom: 50px;
-  text-align: center;
+  width: calc(100% - 330px);
+  height: calc(100% - 80px);
 }
 
 #stalk{
@@ -108,8 +108,8 @@ body{
   background: white;
   box-shadow: 0px 2px 5px #d3d3d3;
   position: relative;
-  margin: 14px;
-  margin-top: 70px;
+  margin: 20px;
+
   float:right;
 }
 
@@ -284,7 +284,7 @@ function resizing(){
   //alert(smallerratio);
   var mul=1;
     if ((w<=1430)||(h<=758)){ //if screen size is too small
-      mul=0.5;
+      mul=0.65;
     }
 
 
@@ -302,13 +302,15 @@ function resizing(){
   document.getElementsByClassName('playlist')[i].style.width = (mul*36)+"px";
   document.getElementsByClassName('star')[i].style.width = (mul*36)+"px";
 
-  if (mul==0.5){
-    document.getElementsByClassName('playit')[i].style.top= "-3px";
-    document.getElementsByClassName('playit')[i].style.left= "27px";
-    document.getElementsByClassName('loveit')[i].style.top= "40px";
-    document.getElementsByClassName('loveit')[i].style.left= "3px";
-    document.getElementsByClassName('playlistit')[i].style.top= "42px";
-    document.getElementsByClassName('playlistit')[i].style.left= "88px";
+  if (mul==0.65){
+    document.getElementsByClassName('playit')[i].style.top= "16px";
+    document.getElementsByClassName('playit')[i].style.left= "38px";
+    document.getElementsByClassName('loveit')[i].style.top= "59px";
+    document.getElementsByClassName('loveit')[i].style.left= "10px";
+    document.getElementsByClassName('playlistit')[i].style.top= "60px";
+    document.getElementsByClassName('playlistit')[i].style.left= "120px";
+    document.getElementsByClassName('albumart')[i].style.margin= "5px";
+    document.getElementsByClassName('albumart')[i].style.marginTop= "95px";
 
   }
 
@@ -319,6 +321,8 @@ function resizing(){
     document.getElementsByClassName('loveit')[i].style.left= "16px";
     document.getElementsByClassName('playlistit')[i].style.top= "100px";
     document.getElementsByClassName('playlistit')[i].style.left= "180px";
+    document.getElementsByClassName('albumart')[i].style.margin= "42px";
+    document.getElementsByClassName('albumart')[i].style.marginTop= "52px";
   }
 
 
