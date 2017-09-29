@@ -260,14 +260,19 @@ body{
 }
 #accountbtndiv{
   height: 55px;
-  left: 15px;
+  left: 30px;
   position:absolute;
   padding-top: 15px;
 }
 #searchinput{
-  background-color: rgba(0,0,0,0);
-  border: 1px solid black;
+  background: url(icons/search.svg) no-repeat scroll 124px 2px;
+  padding-right:13px;
+  background-color: white;
+  border-radius: 25px;
+  border: 1px solid white;
   outline: none;
+  box-shadow: 0px 0px 2px #111;
+  text-indent: 15px;
 }
 </style>
 <script>
@@ -378,7 +383,7 @@ document.getElementsByID('tachles').style.margin = (mul*20)+"px";
 
 </div>
 <div id="searchbtndiv">
-<input id="searchinput" type="text" />
+<input placeholder="חפש" id="searchinput" type="text" />
 </div>
 <div id="accountbtndiv">
 
