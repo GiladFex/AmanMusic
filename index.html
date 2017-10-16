@@ -1,10 +1,10 @@
 <html>
 <head>
   <link href="https://fonts.googleapis.com/css?family=Assistant:400,600,700&amp;subset=hebrew" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-sanitize.min.js"></script>
-  <script src="https://unpkg.com/videogular@2.1.2/dist/videogular/videogular.js"></script>
-  <script src="https://unpkg.com/videogular@2.1.2/dist/controls/vg-controls.js"></script>
+  <script src="js/angular.min.js.js"></script>
+  <script src="js/angular-sanitize.min.js"></script>
+  <script src="js/videogular.js.js"></script>
+  <script src="js/vg-controls.js.js"></script>
 
   <title>אמן מוזיקה</title>
 <style>
@@ -132,6 +132,10 @@ body{
   float:right;
   width: calc(100% - 330px);
   height: calc(100% - 80px);
+  /** display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: space-around;
+  justify-content: space-around; **/
 }
 
 #stalk{
@@ -190,14 +194,12 @@ body{
   background: white;
   box-shadow: 0px 2px 5px #d3d3d3;
   position: relative;
-  margin: 20px;
-
+  margin: 42px;
+  margin-top: 52px;
+  transition-duration: 0.45s;
   float:right;
 }
 
-.albumart {
-  transition-duration: 0.45s;
- }
 
 .overflowing {
    width: 230px;
@@ -365,7 +367,7 @@ function resizing(){
 
   //alert(smallerratio);
   var mul=1;
-    if ((w<=1430)||(h<=758)){ //if screen size is too small
+    if ((w<=1430)||(h<=956)){ //if screen size is too small
       mul=0.65;
     }
 
